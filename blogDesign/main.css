@@ -1,0 +1,188 @@
+body, html, p {
+	margin: 0px;
+}
+
+.header {
+	background: rgb(15, 181, 15);
+	color: white;
+	display: flex;
+	padding: 15px;
+}
+
+.header .title {
+	flex: 5;
+	font-size: 25px;
+}
+
+.header .items {
+	min-width: 200px;
+	flex: 1;
+	display: flex;
+}
+
+.header .items p {
+	flex: 1;
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.3s ease;
+	padding: 3px;
+}
+
+.header .items p:hover {
+	background: rgb(31, 153, 31);
+}
+
+.header .items p:active {
+	background: rgb(24, 103, 24);
+}
+
+.content {
+	width: 100%;
+	height: 100vh;
+}
+
+.blog {
+	margin: auto;
+	margin-top: 20px;
+	max-width: 1000px;
+	width: 80%;
+	padding: 20px;
+	box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+.blog hr {
+	width: 90%;
+	background: gray;
+	border: 0;
+	height: 2px;
+}
+
+.blog > div {
+	width: 90%;
+	margin: auto;
+}
+
+.blog .ctitle {
+	color: rgb(75, 75, 75);
+	text-align: center;
+}
+
+.blog .comments {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.blog .write-comment {
+	margin-top: 40px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+.blog .comment-container .add-comment {
+	color: gray;
+	margin: auto;
+	text-align: center;
+}
+
+.blog .write-comment .comment-text {
+	width: 60%;
+	border: 0px;
+	border-bottom: 2px solid gray;
+	outline: none;
+	transition: all 0.2s ease;
+	resize: none;
+	min-height: 50px;
+	max-height: 200px;
+}
+
+.blog .write-comment .comment-text:focus {
+	border-color: lightgray;
+}
+
+.blog .write-comment .comment-button {
+	background: lightgray;
+	border: 0px;
+	transition: all 0.2s ease;
+	cursor: pointer;
+	transform: translate(0%, -50%);
+}
+
+.blog .write-comment .comment-button:hover {
+	background: rgb(234, 234, 234);
+}
+
+.blog .comment {
+	width: 85%;
+	margin: auto;
+	margin-top: 10px;
+	box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+.blog .comment > div {
+	padding: 3px;
+}
+
+.blog .title {
+	text-align: center;
+	font-size: 25px;
+}
+
+.blog .info {
+	display: flex;
+}
+
+.blog .writer {
+	flex: 1;
+	color: gray;
+	font-size: 12px;
+}
+
+.blog .writer.owner {
+	font-weight: bold;
+}
+
+.blog .date {
+	flex: 1;
+	color: gray;
+	font-size: 12px;
+	text-align: right;
+}
+
+.blog .text {
+	margin-top: 20px;
+}
+
+.blog .emotions {
+	margin-top: 35px;
+	color: gray;
+}
+
+.blog .fas {
+	padding: 3px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+
+.blog #like:hover {
+	color: red;
+}
+
+.blog #like:active {
+	color: rgb(219, 0, 0);
+}
+
+.blog #share:hover {
+	color: rgb(101, 147, 255);
+}
+
+.blog #share:active {
+	color: rgb(84, 84, 255);
+}
+
+.blog #comment:hover {
+	color: rgb(0, 189, 0);
+}
+
+.blog #comment:active {
+	color: rgb(0, 132, 0);
+}
