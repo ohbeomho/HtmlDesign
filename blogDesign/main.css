@@ -7,6 +7,7 @@ body, html, p {
 	color: white;
 	display: flex;
 	padding: 15px;
+	user-select: none;
 }
 
 .header .title {
@@ -36,9 +37,22 @@ body, html, p {
 	background: rgb(24, 103, 24);
 }
 
-.content {
+.container {
 	width: 100%;
 	height: 100vh;
+}
+
+.content {
+	min-height: 100vh;
+}
+
+.copy {
+	margin-top: 50px;
+	background: rgb(198, 198, 198);
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	color: rgb(80, 80, 80);
 }
 
 .blog {
@@ -53,8 +67,8 @@ body, html, p {
 .blog hr {
 	width: 90%;
 	background: gray;
-	border: 0;
-	height: 2px;
+	border: 0px;
+	height: 0.5px;
 }
 
 .blog > div {
@@ -76,6 +90,7 @@ body, html, p {
 	margin-top: 40px;
 	margin-bottom: 40px;
 	text-align: center;
+	display: none;
 }
 
 .blog .comment-container .add-comment {
@@ -87,16 +102,19 @@ body, html, p {
 .blog .write-comment .comment-text {
 	width: 60%;
 	border: 0px;
-	border-bottom: 2px solid gray;
 	outline: none;
 	transition: all 0.2s ease;
 	resize: none;
 	min-height: 50px;
 	max-height: 200px;
+	font-family: inherit;
+	overflow: hidden;
+	box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
 .blog .write-comment .comment-text:focus {
 	border-color: lightgray;
+	box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
 }
 
 .blog .write-comment .comment-button {
@@ -105,6 +123,7 @@ body, html, p {
 	transition: all 0.2s ease;
 	cursor: pointer;
 	transform: translate(0%, -50%);
+	border-radius: 3px;
 }
 
 .blog .write-comment .comment-button:hover {
@@ -115,7 +134,12 @@ body, html, p {
 	width: 85%;
 	margin: auto;
 	margin-top: 10px;
-	box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
+	border: 0px;
+}
+
+.blog .comment .comment-hr {
+	width: 100%;
+	background: rgba(128, 128, 128, 0.227);
 }
 
 .blog .comment > div {
@@ -157,6 +181,7 @@ body, html, p {
 	padding: 3px;
 	transition: all 0.3s ease;
 	cursor: pointer;
+	user-select: none;
 }
 
 .blog #like:hover {

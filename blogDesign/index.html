@@ -25,7 +25,7 @@
 					<div class="writer">WriterName</div>
 					<div class="date">2022/03/22</div>
 				</div>
-				<hr/>
+				<hr>
 				<div class="text">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet interdum quam. Aenean luctus pulvinar ultricies. Sed orci lorem, vestibulum id nisl ut, fermentum pharetra elit. Duis libero felis, ultricies ut dolor ac, laoreet posuere nisl. Nunc est eros, dapibus eu leo eu, hendrerit scelerisque turpis. Cras orci nibh, ornare nec feugiat at, consequat cursus enim. Maecenas dapibus lorem ex, vitae pharetra magna ultrices porta. Duis ac metus purus. Donec et scelerisque ante. Donec sed ligula ornare, convallis turpis eget, facilisis libero.
 				</div>
@@ -33,11 +33,11 @@
 					<i class="fas fa-heart" id="like">Like</i>
 					<i class="fas fa-share" id="share">Share</i>
 				</div>
-				<hr/>
+				<hr>
 				<div class="comment-container">
 					<div class="comments">
 						<div class="ctitle">Comments</div>
-						<hr style="background: darkgray;" />
+						<hr style="background: darkgray;">
 						<div class="comment">
 							<span class="info">
 								<div class="writer">Writer1</div>
@@ -47,6 +47,7 @@
 							<span class="text">
 								Oh It's Lorem ipsum!
 							</span>
+							<hr class="comment-hr">
 						</div>
 						<div class="comment">
 							<span class="info">
@@ -56,6 +57,7 @@
 							<span class="text">
 								Yes, it is.
 							</span>
+							<hr class="comment-hr">
 						</div>
 						<div class="comment">
 							<span class="info">
@@ -65,14 +67,16 @@
 							<span class="text">
 								Nice random text generator! Thanks for good info.
 							</span>
+							<hr class="comment-hr">
 						</div>
 					</div>
 					<div class="add-comment">
 						<i class="fas fa-comment" id="comment">Comment</i>
 					</div>
-					<hr/>
-					<div class="write-comment" style="display: none;">
+					<hr style="width: 100%">
+					<div class="write-comment">
 						<div class="ctitle">Write Comment</div>
+						<br>
 						<div class="inputs">
 							<textarea name="commentText" class="comment-text" placeholder="Write Comment..." onkeydown="resizeTA()" onkeyup="resizeTA()"></textarea>
 							<button class="comment-button">Comment</button>
@@ -81,8 +85,12 @@
 				</div>
 			</div>
 		</div>
+		<div class="copy">
+			This page designed by &copy; OhBeomho.
+		</div>
 	</div>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="./script.js"></script>
 </body>
 </html>

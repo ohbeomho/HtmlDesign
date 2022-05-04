@@ -1,24 +1,33 @@
-const addComment = document.querySelector("#comment");
-const writeComment = document.querySelector(".write-comment");
-const commentButton = document.querySelector(".comment-button");
-const commentText = document.querySelector(".comment-text");
+const addComment = $("#comment");
+const writeComment = $(".write-comment");
+const commentButton = $(".comment-button");
+const commentText = $(".comment-text");
 
-addComment.addEventListener("click", () => {
-	if (writeComment.getAttribute("style")) {
-		writeComment.removeAttribute("style");	
+addComment.on("click", () => {
+	if (writeComment.css("display") == "none") {
+		writeComment.css("display", "block");
 	} else {
-		writeComment.setAttribute("style", "display: none;");
+		writeComment.css("display", "none");
 	}
 });
 
-commentButton.addEventListener("click", () => {
+commentButton.on("click", () => {
 	commentText.value = "";
-	writeComment.setAttribute("style", "display: none;");
+	writeComment.css("display", "none");
 });
 
 function resizeTA() {
-	commentText.style.height = "auto";
-	commentText.style.height = `${commentText.scrollHeight + 12}px`;
+	let height = commentText.css("height");
+	height = height.substr(0, height.length - 2);
+
+	if (height >= 200) {
+		commentText.css("overflow-y", "scroll");
+	} else {
+		commentText.css("overflow-y", "hidden");
+	}
+
+	commentText.css("height", "auto");
+	commentText.css("height", `${commentText.prop("scrollHeight") + 2}px`);
 }
 
 resizeTA();
