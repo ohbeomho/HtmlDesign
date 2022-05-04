@@ -137,10 +137,6 @@ body, html, p {
 	font-size: 12px;
 }
 
-.blog .writer.owner {
-	font-weight: bold;
-}
-
 .blog .date {
 	flex: 1;
 	color: gray;
