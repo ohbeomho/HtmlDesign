@@ -9,13 +9,31 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 </head>
 <body>
+	<div class="profile-modal">
+		<div class="profile-modal-body">
+			<div class="top"><i id="close" class="fas fa-window-close"></i></div>
+			<div class="title">Your Profile</div>
+			<div class="content">
+				<div class="profile-img"><i class="fas fa-user-circle"></i></div>
+				<div class="username">Not logged in</div>
+				<div class="buttons">
+					<a href="#" id="login" class="button">Login</a>
+					<a href="#" id="register" class="button">Register</a>
+					<a href="#" id="edit" class="button">Edit</a>
+				</div>
+				<div class="plslogin">
+					Please login.
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="container">
 		<div class="header">
-			<p class="title">HTML Blog Design</p>
+			<div class="title">HTML Blog Design</div>
 			<div class="items">
-				<p>Home</p>
-				<p>Sign in</p>
-				<p>Sign up</p>
+				<p id="home">Home</p>
+				<p id="profile"><i class="fas fa-user"></i></p>
 			</div>
 		</div>
 		<div class="content">
@@ -39,46 +57,44 @@
 						<div class="ctitle">Comments</div>
 						<hr style="background: darkgray;">
 						<div class="comment">
-							<span class="info">
+							<div class="info">
 								<div class="writer">Writer1</div>
 								<div class="date">2022/03/23</div>
 								<div style="display: none;" class="id">0</div>
-							</span>
-							<span class="text">
+							</div>
+							<div class="text">
 								Oh It's Lorem ipsum!
-							</span>
+							</div>
 							<hr class="comment-hr">
 						</div>
 						<div class="comment">
-							<span class="info">
-								<span class="writer">WriterName</span>
-								<span class="date">2022/03/23</span>
-							</span>
-							<span class="text">
+							<div class="info">
+								<div class="writer">WriterName</div>
+								<div class="date">2022/03/23</div>
+							</div>
+							<div class="text">
 								Yes, it is.
-							</span>
+							</div>
 							<hr class="comment-hr">
 						</div>
 						<div class="comment">
-							<span class="info">
-								<span class="writer">Writer3</span>
-								<span class="date">2022/03/23</span>
-							</span>
-							<span class="text">
+							<div class="info">
+								<div class="writer">Writer3</div>
+								<div class="date">2022/03/23</div>
+							</div>
+							<div class="text">
 								Nice random text generator! Thanks for good info.
-							</span>
+							</div>
 							<hr class="comment-hr">
 						</div>
 					</div>
 					<div class="add-comment">
-						<i class="fas fa-comment" id="comment">Comment</i>
+						<i class="fas fa-comment" id="comment">Write Comment</i>
 					</div>
 					<hr style="width: 100%">
 					<div class="write-comment">
-						<div class="ctitle">Write Comment</div>
-						<br>
 						<div class="inputs">
-							<textarea name="commentText" class="comment-text" placeholder="Write Comment..." onkeydown="resizeTA()" onkeyup="resizeTA()"></textarea>
+							<textarea name="commentText" class="comment-text" placeholder="Write Something..." onkeydown="resizeTA()" onkeyup="resizeTA()"></textarea>
 							<button class="comment-button">Comment</button>
 						</div>
 					</div>

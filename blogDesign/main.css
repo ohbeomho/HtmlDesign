@@ -2,6 +2,22 @@ body, html, p {
 	margin: 0px;
 }
 
+a {
+	color: rgb(64, 64, 64);
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+a:hover {
+	color: rgb(166, 166, 166);
+}
+
+.button {
+	padding: 5px;
+	background: gray;
+	border-radius: 3px;
+}
+
 .header {
 	background: rgb(15, 181, 15);
 	color: white;
@@ -114,7 +130,7 @@ body, html, p {
 
 .blog .write-comment .comment-text:focus {
 	border-color: lightgray;
-	box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.35);
 }
 
 .blog .write-comment .comment-button {
@@ -127,7 +143,12 @@ body, html, p {
 }
 
 .blog .write-comment .comment-button:hover {
-	background: rgb(234, 234, 234);
+	background: rgb(0, 189, 0);
+	color: white;
+}
+
+.blog .write-comment .comment-button:active {
+	background: rgb(0, 132, 0);
 }
 
 .blog .comment {
@@ -206,4 +227,88 @@ body, html, p {
 
 .blog #comment:active {
 	color: rgb(0, 132, 0);
+}
+
+/* Modal */
+
+.profile-modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	width: 100%;
+	height: 100%;
+	min-height: 1000px;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.profile-modal-body {
+	margin: auto;
+	margin-top: 30px;
+	background: white;
+	text-align: center;
+	border: 0;
+	border-radius: 5px;
+	width: 50%;
+	height: 50%;
+	padding: 3px;
+}
+
+.profile-modal .top {
+	margin: auto;
+	text-align: right;
+	color: gray;
+	width: 100%;
+}
+
+.profile-modal #close {
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+.profile-modal #close:hover {
+	color: red;
+}
+
+.profile-modal #close:active {
+	color: rgb(182, 0, 0);
+}
+
+.profile-modal .title {
+	font-size: 30px;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+.profile-modal .profile-img {
+	font-size: 100px;
+}
+
+.profile-modal .username {
+	margin-bottom: 10px;
+}
+
+.profile-modal .button {
+	color: white;
+}
+
+.profile-modal .buttons {
+	margin-bottom: 50px;
+}
+
+.profile-modal .button:hover {
+	background: rgb(0, 189, 0);
+}
+
+.profile-modal .button:active {
+	background: rgb(0, 132, 0);
+}
+
+.profile-modal .button#edit {
+	display: none;
+}
+
+.plslogin {
+	font-size: 12px;
+	color: gray;
 }
