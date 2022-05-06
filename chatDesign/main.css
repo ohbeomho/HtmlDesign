@@ -1,0 +1,117 @@
+body, html, p {
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+	overflow: hidden;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.header {
+	flex: 1;
+	background: rgb(0, 106, 255);
+	color: white;
+	text-align: center;
+	display: table;
+}
+
+.chat-area {
+	flex: 7;
+	overflow-y: scroll;
+}
+
+.title {
+	font-size: 35px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.inputs {
+	flex: 0.7;
+	background: lightgray;
+}
+
+.message {
+	padding: 10px;
+	display: flex;
+}
+
+.profile {
+	color: gray;
+	text-align: center;
+	margin-right: 12px;
+}
+
+.profile i {
+	font-size: 30px;
+}
+
+.profile p {
+	font-size: 12px;
+}
+
+.message .text {
+	text-align: center;
+	border-radius: 4px;
+	padding: 3px;
+	margin-top: 10px;
+	display: table;
+	height: 50%;
+	min-height: 20px;
+}
+
+.message .text p {
+	max-width: 70vw;
+	display: table-cell;
+	vertical-align: middle;
+	word-wrap: break-word;
+}
+
+.message.me .text {
+	background: rgb(0, 106, 255);
+	color: white;
+}
+
+.message.other .text {
+	background: lightgray;
+}
+
+.message.server .text {
+	color: rgb(91, 91, 91);
+}
+
+.inputs .message-input {
+	flex: 10;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border: 0;
+	height: 80%;
+	outline: none;
+}
+
+.inputs .send-button {
+	flex: 1;
+	border: 0;
+	font-size: 27px;
+	background: rgb(0, 106, 255);
+	color: white;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	height: 80%;
+}
+
+.input-container {
+	width: 70%;
+	height: 100%;
+	text-align: center;
+	margin: auto;
+	display: flex;
+	align-items: center;
+}
