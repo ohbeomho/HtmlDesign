@@ -65,6 +65,7 @@ html, body, .container {
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
 	box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
+	border: 1px solid rgba(0, 0, 0, 0.3);
 	outline: none;
 	transition: all 0.2s ease;
 }
@@ -80,6 +81,7 @@ html, body, .container {
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
 	background: rgba(211, 211, 211, 0.3);
+	border: 1px solid rgba(0, 0, 0, 0.3);
 	box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 	transition: all 0.2s ease;
@@ -97,4 +99,28 @@ html, body, .container {
 	height: 5%;
 	min-height: 40px;
 	background: lightgray;
+	text-align: center;
+	display: table;
+	width: 100%;
+	color: gray;
+}
+
+.bottom a {
+	color: rgb(116, 116, 255);
+	transition: all 0.2s ease;
+	text-decoration: underline 1px;
+}
+
+.bottom a:hover {
+	color: rgb(155, 155, 155);
+	text-decoration: none;
+}
+
+.bottom a:visited {
+	color: rgb(116, 116, 255);
+}
+
+.bottom span {
+	display: table-cell;
+	vertical-align: middle;
 }
