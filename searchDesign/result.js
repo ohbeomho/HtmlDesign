@@ -33,7 +33,7 @@ function getQS() {
     let url = document.location.href
     let qs = url.substring(url.indexOf("?") + 1).split("&")
     let result = {}
-    for(let i = 0; i < qs.length; i++) {
+    for (let i = 0; i < qs.length; i++) {
         qs[i] = qs[i].split("=")
         result[qs[i][0]] = decodeURIComponent(qs[i][1])
     }
