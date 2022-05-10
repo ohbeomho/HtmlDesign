@@ -42,7 +42,7 @@ html, body, .container {
 	height: 89%;
 	padding-bottom: 1vh;
 	text-align: center;
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x: hidden;
 }
 
@@ -50,7 +50,7 @@ html, body, .container {
 	border: 0;
 	background: rgba(0, 0, 0, 0.5);
 	height: 1px;
-	box-shadow: 0px 1.5px 1px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .bottom {
@@ -148,7 +148,7 @@ html, body, .container {
 .results {
 	width: 100%;
 	min-width: 300px;
-	height: 120vh;
+	height: 300px;
 	margin: auto;
 	margin-top: 20px;
 	text-align: left;
