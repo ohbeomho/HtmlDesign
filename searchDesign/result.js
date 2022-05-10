@@ -11,7 +11,7 @@ $(document).ready(() => {
     
         location.href = `${path}?search=${searchText.val()}`
     })
-    
+
     searchText.on("keydown", (event) => {
         if (event.keyCode == 13) {
             let path = location.href.split("?")[0]
