@@ -1,10 +1,14 @@
-const searchText = $(".search-text");
-const searchButton = $(".search-button");
+const searchText = $(".search-text")
+const searchButton = $(".search-button")
 
 searchText.on("keydown", (event) => {
-	if (event.keyCode == 13) {
-		location.href = "./result.html";
+	if (event.keyCode == 13 && searchText.val() != "") {
+		location.href = "./result.html?search=" + searchText.val()
 	}
 });
 
-searchButton.on("click", () => location.href = "./result.html");
+searchButton.on("click", () => {
+	if (searchText.val() != "") {
+		location.href = "./result.html?search=" + searchText.val()
+	}
+});
