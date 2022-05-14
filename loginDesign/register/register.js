@@ -6,11 +6,11 @@ const inputs = [ nameInput, emailInput, passwordInput, confirmPassword ]
 const error = $(".error")
 
 $(document).ready(() => {
-    $(".button.login").click((event) => {
+    $(".button.register").click((event) => {
         event.preventDefault()
         checkInput()
     })
-    
+
     nameInput.on("keydown", () => error.text(""))
     emailInput.on("keydown", () => error.text(""))
     passwordInput.on("keydown", () => error.text(""))
