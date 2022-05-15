@@ -10,6 +10,16 @@ abbr {
     text-decoration-color: rgba(0, 0, 0, 0.3);
 }
 
+a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: rgb(0, 187, 255);
+}
+
 /* menubar style */
 
 .menubar {
@@ -39,16 +49,6 @@ abbr {
     color: rgb(0, 187, 255);
 }
 
-.menubar a {
-    color: white;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-.menubar a:hover {
-    color: rgb(0, 187, 255);
-}
-
 .menubar .title {
     flex: 2;
     font-size: 30px;
@@ -60,21 +60,34 @@ abbr {
 
 .container {
     width: 100%;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
 .container .title {
     width: 100%;
-    height: 25vh;
-    min-height: 230px;
+    min-height: 150px;
     background: rgb(0, 132, 255);
     font-size: 40px;
 }
 
 .container .content {
     width: 100%;
-    min-height: 50vh;
+    min-height: 70vh;
     flex: 7;
+    text-align: center;
+}
+
+.container .content .text {
+    width: 70%;
+    white-space: pre-line;
+    font-size: 18px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.container .source {
+    text-align: center;
+    padding: 10px;
+    background: gray;
 }
