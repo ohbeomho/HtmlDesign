@@ -13,10 +13,6 @@
     vertical-align: middle;
 }
 
-.container .title span {
-    font-weight: bold;
-}
-
 .container .content .picture {
     width: 90%;
     margin: auto;

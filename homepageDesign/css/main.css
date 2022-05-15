@@ -73,7 +73,7 @@ a:hover {
 
 .container .content {
     width: 100%;
-    min-height: 70vh;
+    min-height: 90vh;
     flex: 7;
     text-align: center;
 }
@@ -84,6 +84,15 @@ a:hover {
     font-size: 18px;
     margin: auto;
     margin-top: 50px;
+}
+
+.container .content .text a {
+    color: gray;
+    font-weight: bold;
+}
+
+.container .content .text a:hover {
+    color: rgb(0, 187, 255);
 }
 
 .container .source {
