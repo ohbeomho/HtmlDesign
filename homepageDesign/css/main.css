@@ -1,0 +1,80 @@
+body, html {
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: "Segoe UI Light";
+}
+
+abbr {
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.3);
+}
+
+/* menubar style */
+
+.menubar {
+    width: 100%;
+    background: rgb(0, 111, 214);
+    color: white;
+    display: flex;
+    user-select: none;
+}
+
+.menubar .pages {
+    flex: 5;
+    text-align: center;
+    display: table;
+}
+
+.menubar .page {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.menubar .page.selected a {
+    color: rgb(179, 218, 255);
+}
+
+.menubar .page.selected a:hover {
+    color: rgb(0, 187, 255);
+}
+
+.menubar a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.menubar a:hover {
+    color: rgb(0, 187, 255);
+}
+
+.menubar .title {
+    flex: 2;
+    font-size: 30px;
+    padding: 10px;
+    text-align: right;
+}
+
+/* container style */
+
+.container {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container .title {
+    width: 100%;
+    height: 25vh;
+    min-height: 230px;
+    background: rgb(0, 132, 255);
+    font-size: 40px;
+}
+
+.container .content {
+    width: 100%;
+    min-height: 50vh;
+    flex: 7;
+}
