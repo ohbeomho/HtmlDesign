@@ -69,6 +69,14 @@ a:hover {
     min-height: 150px;
     background: rgb(0, 132, 255);
     font-size: 40px;
+    display: table;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container .title div {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .container .content {

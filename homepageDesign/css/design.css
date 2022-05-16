@@ -1,0 +1,12 @@
+.items {
+    width: 50%;
+    min-width: 400px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.items .item {
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+}
