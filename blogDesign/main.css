@@ -1,5 +1,6 @@
 body, html, p {
     margin: 0px;
+    font-family: "Segoe UI Light";
 }
 
 a {
@@ -199,10 +200,10 @@ a:hover {
 }
 
 .blog .fas {
-    padding: 3px;
     transition: all 0.3s ease;
     cursor: pointer;
     user-select: none;
+    margin: 7px;
 }
 
 .blog #like:hover {
