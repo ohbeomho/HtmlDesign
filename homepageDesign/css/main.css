@@ -84,6 +84,7 @@ a:hover {
     min-height: 90vh;
     flex: 7;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .container .content .text {
