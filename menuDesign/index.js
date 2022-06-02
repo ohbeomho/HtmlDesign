@@ -9,10 +9,14 @@ $(document).ready(() => {
     })
 
     $("#menuButton").click(() => {
-        if ($(".menu").css("display") == "block") {
-            $(".menu").css("display", "none")
+        if (Math.ceil(($(".menu").width() / $(window).width() * 100)) + "%" == "20%") {
+            $(".menu").css("opacity", "0")
+            $(".menu").width("0")
+            $(".content").width("100%")
         } else {
-            $(".menu").css("display", "block")
+            $(".menu").css("opacity", "1")
+            $(".menu").width("20%")
+            $(".content").width("80%")
         }
     })
 })

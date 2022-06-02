@@ -44,6 +44,7 @@ div {
     text-align: center;
     background: rgba(255, 255, 255, 0.1);
     float: left;
+    transition: all 0.2s;
 }
 
 #menuButton {
@@ -84,6 +85,7 @@ div {
     height: 100vh;
     text-align: center;
     display: table;
+    transition: all 0.2s;
 }
 
 .content p {
