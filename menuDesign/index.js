@@ -9,14 +9,12 @@ $(document).ready(() => {
     })
 
     $("#menuButton").click(() => {
-        if (Math.ceil(($(".menu").width() / $(window).width() * 100)) + "%" == "20%") {
-            $(".menu").css("opacity", "0")
-            $(".menu").width("0")
-            $(".content").width("100%")
-        } else {
-            $(".menu").css("opacity", "1")
-            $(".menu").width("20%")
+        if ($(".menu").css("max-width") == "0px") {
+            $(".menu").css("max-width", "20%")
             $(".content").width("80%")
+        } else {
+            $(".menu").css("max-width", "0px")
+            $(".content").width("100%")
         }
     })
 })
