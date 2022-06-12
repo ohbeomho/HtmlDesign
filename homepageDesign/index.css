@@ -45,18 +45,22 @@ html, body {
     text-align: right;
 }
 
-span i {
+.button {
     padding: 5px;
     font-size: 25px;
     border-radius: 5px;
 }
 
-span i:hover {
+.button:hover {
     background: rgba(0, 0, 0, 0.1);
 }
 
-span i:active {
+.button:active {
     background: rgba(0, 0, 0, 0.05);
+}
+
+.button i {
+    font-size: 20px;
 }
 
 .middle {
@@ -84,19 +88,19 @@ span i:active {
     border-radius: 5px;
 }
 
-.search-button {
+.button.search {
     flex: 0.5;
 }
 
-.search-button i {
+.button.search {
     border-radius: 20px;
-    padding: 10px;
 }
 
 .bottom {
     height: 5vh;
     background: rgba(0, 0, 0, 0.25);
     display: table;
+    user-select: none;
 }
 
 .bottom span {
@@ -104,12 +108,21 @@ span i:active {
     vertical-align: middle;
 }
 
-.bottom a {
+a {
     color: white;
     text-decoration: none;
     margin: 10px;
 }
 
-.bottom a:hover {
+a:hover {
     text-decoration: underline;
+}
+
+.quick-links {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    height: 100px;
+    margin: auto;
+    margin-top: 30vh;
 }
