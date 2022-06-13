@@ -14,6 +14,8 @@ html, body {
 .container {
     width: 100%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-image: url(./images/background.jpg);
     background-size: cover;
 }
@@ -25,14 +27,13 @@ html, body {
 
 .top {
     width: 100%;
-    height: 10vh;
+    flex: 1;
     font-size: 20px;
     user-select: none;
 }
 
 .top > div {
     width: 40%;
-    margin: 15px;
 }
 
 .left {
@@ -64,7 +65,13 @@ html, body {
 }
 
 .middle {
-    height: 85vh;
+    flex: 8.5;
+    display: flex;
+    flex-direction: column;
+}
+
+.search {
+    flex: 1;
 }
 
 .search-bar {
@@ -81,7 +88,6 @@ html, body {
     flex: 10;
     border: 0px;
     outline: none;
-    border-radius: 20px;
 }
 
 .search-bar:focus {
@@ -93,11 +99,12 @@ html, body {
 }
 
 .button.search {
-    border-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .bottom {
-    height: 5vh;
+    flex: 0.5;
     background: rgba(0, 0, 0, 0.25);
     display: table;
     user-select: none;
@@ -119,10 +126,13 @@ a:hover {
 }
 
 .quick-links {
+    flex: 1;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    width: 60%;
-    height: 100px;
-    margin: auto;
-    margin-top: 30vh;
+    width: 100%;
+}
+
+.quick-links > div {
+    margin: 7px;
 }
