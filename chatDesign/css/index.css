@@ -1,9 +1,6 @@
-html {
-    overflow: hidden;
-}
-
 .container {
     display: flex;
+    user-select: none;
 }
 
 .container > div {
@@ -26,7 +23,6 @@ html {
 
 .main {
     flex: 1;
-    user-select: none;
 }
 
 .main > div {
@@ -67,7 +63,7 @@ html {
 }
 
 .main .button:hover {
-    background: rgb(220, 220, 220);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .chat {
@@ -79,7 +75,7 @@ html {
 
 .chat:hover {
     border-radius: 10px;
-    background: rgb(238, 238, 238);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .chat .middle {
@@ -104,12 +100,13 @@ html {
 }
 
 .chat .name {
+    font-size: 17px;
     font-weight: bold;
 }
 
 .chat .last-chat {
     color: gray;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .chat .right {
@@ -137,5 +134,10 @@ html {
 
 .chat .user-count {
     color: gray;
-    font-size: 12px;
+    font-size: 13px;
+}
+
+.bottom a {
+    text-decoration: none;
+    color: black;
 }
