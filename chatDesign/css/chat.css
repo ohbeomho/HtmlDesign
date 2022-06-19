@@ -1,0 +1,155 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+.top {
+    background: rgb(111, 127, 173);
+    color: white;
+    display: flex;
+}
+
+.middle {
+    flex: 5;
+    background: rgb(140, 158, 212);
+    overflow: auto;
+}
+
+.bottom {
+    display: flex;
+    background: black;
+}
+
+.bottom > * {
+    padding: 30px;
+    font-size: 17px;
+}
+
+.chat-input {
+    border: 0;
+    outline: none;
+    flex: 1;
+}
+
+.send {
+    background: yellow;
+    border: 0;
+}
+
+.send:hover {
+    background: rgba(255, 255, 0, 0.9);
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user > span {
+    margin: 7px 0px 7px 10px;
+}
+
+.buttons {
+    flex: 1;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 24px;
+}
+
+.buttons > span {
+    margin: 0px 12px 0px 0px;
+}
+
+.image img {
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.top .image img {
+    width: 70px;
+    height: 70px;
+}
+
+.middle .image img {
+    width: 60px;
+    height: 60px;
+}
+
+.top .name {
+    font-weight: bold;
+}
+
+.button {
+    transition: all 0.2s;
+}
+
+.top .button {
+    padding: 3px 7px 3px 7px;
+    border-radius: 10px;
+}
+
+.top a {
+    text-decoration: none;
+    color: white;
+}
+
+.top .button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.messages {
+    width: 99%;
+    list-style-type: none;
+    margin: auto;
+    margin-top: 0.5vw;
+    padding: 0;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.message .name {
+    color: white;
+}
+
+.message.me {
+    justify-content: right;
+}
+
+.message.other .text {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mt {
+    margin-top: 4px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.message-text {
+    padding: 3px;
+    border-radius: 2px;
+}
+
+.message.other .message-text {
+    background: white;
+}
+
+.message.me .message-text {
+    background: yellow;
+}
+
+.message .time {
+    color: rgb(35, 35, 35);
+    font-size: 13px;
+    margin: 4px;
+    margin-bottom: 0px;
+}

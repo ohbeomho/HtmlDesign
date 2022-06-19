@@ -5,8 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatting</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="top">
+            <div class="user">
+                <span class="image">
+                    <img src="./images/user.png" alt="">
+                </span>
+                <span class="name"></span>
+            </div>
+            <div class="buttons">
+                <span title="Menu" class="button menu"><i class="fas fa-bars"></i></span>
+                <span title="Close chat" class="button exit">
+                    <a href="./index.html">
+                        <i class="fas fa-xmark"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="middle">
+            <ul class="messages">
+                <li class="message other">
+                    <div class="profile">
+                        <span class="image">
+                            <img src="./images/user.png" alt="">
+                        </span>
+                    </div>
+                    <div class="text">
+                        <span class="name">
+                        </span>
+                        <span class="mt">
+                            <span class="message-text">
+                                This is last chat
+                            </span>
+                            <span class="time">PM 1:00</span>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <input type="text" class="chat-input">
+            <span class="button send">Send</span>
+        </div>
+    </div>
+
+    <script src="./js/chat.js"></script>
 </body>
 </html>
