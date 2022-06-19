@@ -16,7 +16,7 @@ addComment.on("click", () => {
 })
 
 commentButton.on("click", () => {
-    commentText.value = ""
+    commentText.val("")
     writeComment.css("display", "none")
 })
 
