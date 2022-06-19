@@ -59,7 +59,7 @@
     font-size: 24px;
 }
 
-.buttons > span {
+.buttons > * {
     margin: 0px 12px 0px 0px;
 }
 
@@ -80,6 +80,10 @@
 
 .top .name {
     font-weight: bold;
+}
+
+.top .user-count {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .button {
@@ -135,7 +139,7 @@
 }
 
 .message-text {
-    padding: 3px;
+    padding: 5px;
     border-radius: 2px;
 }
 
@@ -147,9 +151,28 @@
     background: yellow;
 }
 
+.message .ct {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.message.me .ct {
+    align-items: flex-end;
+    margin-right: 4px;
+}
+
+.message.other .ct {
+    align-items: flex-start;
+    margin-left: 4px;
+}
+
+.message .read {
+    color: yellow;
+    font-size: 13px;
+}
+
 .message .time {
     color: rgb(35, 35, 35);
     font-size: 13px;
-    margin: 4px;
-    margin-bottom: 0px;
 }
