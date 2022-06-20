@@ -1,6 +1,7 @@
 # HTML Design
 
 **Only designs** (and simple feature). No other features implemented.  
+I'm designing using jQuery and FontAwesome.
 
 # Why did you make these?
 
