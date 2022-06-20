@@ -36,6 +36,10 @@ html, body {
     text-shadow: -1px 0 rgba(255, 255, 255, 0.3), 0 1px rgba(255, 255, 255, 0.3), 1px 0 rgba(255, 255, 255, 0.3), 0 -1px rgba(255, 255, 255, 0.3);
 }
 
+.container h1 {
+    user-select: none;
+}
+
 .container .button {
     padding: 10px;
     border-radius: 10px;

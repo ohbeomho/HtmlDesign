@@ -31,6 +31,15 @@ html, body {
     color: rgb(60, 60, 60);
 }
 
+.container h1 {
+    user-select: none;
+}
+
+.container h1 span {
+    color: rgb(0, 82, 196);
+    text-shadow: -1px 0 rgba(255, 255, 255, 0.3), 0 1px rgba(255, 255, 255, 0.3), 1px 0 rgba(255, 255, 255, 0.3), 0 -1px rgba(255, 255, 255, 0.3);
+}
+
 .container .button {
     padding: 10px;
     border-radius: 10px;
