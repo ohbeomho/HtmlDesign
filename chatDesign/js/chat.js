@@ -2,50 +2,54 @@ const url = new URL(location.href)
 const urlParams = url.searchParams;
 const username = urlParams.get("name")
 const userCount = urlParams.get("uc")
-const chatInput = document.querySelector(".chat-input")
-const messageName = document.querySelector(".message .name")
+const chatInput = $(".chat-input")
+const messageName = $(".message .name")
+const messages = $(".messages")
 
 if (username.includes("GroupChat")) {
-    document.querySelector(".image img").setAttribute("src", "./images/users.png")
-    messageName.innerText = "Member"
+    $(".image img").attr("src", "./images/users.png")
+    messageName.text("Member")
 
     if (userCount) {
-        document.querySelector(".message.other .read").innerText = String(userCount - 2)
-        document.querySelector(".user-count").innerText = String(userCount)
+        $(".message.other .read").text(String(userCount - 2))
+        $(".user-count").text(String(userCount))
     }
 } else {
-    messageName.innerText = username
+    messageName.text(username)
 }
 
-document.querySelector(".top .name").innerText = username
+$(".top .name").text(username)
 
-document.querySelector(".send").addEventListener("click", sendMessage)
-chatInput.addEventListener("keypress", function(event) {
+$(".send").click(sendMessage)
+chatInput.on("keypress", function(event) {
     if (event.keyCode == 13) {
         sendMessage()
     }
 })
 
 function sendMessage() {
-    if (chatInput.value == "") {
+    chatInput.focus()
+
+    if (chatInput.val() == "") {
         return
     }
 
-    const message = document.createElement("li")
-    message.classList.add("message", "me")
-    message.innerHTML = `
-        <div class="text">
-            <span class="mt">
-                <span class="ct">
-                    <span class="read">${userCount ? userCount - 1 : 1}</span>
-                    <span class="time">PM 1:00</span>
+    const $message = $(`
+        <li class="message me">
+            <div class="text">
+                <span class="mt">
+                    <span class="ct">
+                        <span class="read">${userCount ? userCount - 1 : 1}</span>
+                        <span class="time">PM 1:00</span>
+                    </span>
+                    <span class="message-text">
+                        ${chatInput.val()}
+                    </span>
                 </span>
-                <span class="message-text">
-                    ${chatInput.value}
-                </span>
-            </span>
-        </div>`
-    document.querySelector(".messages").appendChild(message)
+            </div>
+        </li>`)
+    messages.append($message)
+    $(".middle").scrollTop(messages.prop("scrollHeight"))
 
-    chatInput.value = ""
+    chatInput.val("")
 }
