@@ -8,13 +8,14 @@ $(document).ready(() => {
         })
     })
 
+    let visible = true
     $("#menuButton").click(() => {
-        if ($(".menu").css("max-width") == "0px") {
-            $(".menu").css("max-width", "20%")
-            $(".content").width("80%")
+        if (visible) {
+            $(".menu").css("flex", "0")
         } else {
-            $(".menu").css("max-width", "0px")
-            $(".content").width("100%")
+            $(".menu").css("flex", "1")
         }
+
+        visible = !visible
     })
 })
