@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBHOmail</title>
+    <title>Omail</title>
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/write.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 </head>
 <body>
     <div class="write-mail">
@@ -20,33 +21,61 @@
                 <input type="text" name="subject" id="subject_input">
             </span>
             <span>
-                <textarea name="content" id="content_input" cols="30" rows="10"></textarea>
+                <textarea name="content" id="content_input" cols="30" rows="10">
+                </textarea>
             </span>
         </div>
     </div>
     <div class="container">
         <div class="top">
             <div class="left">
-                <span class="title">OBHOmail</span>
+                <span class="title"><span style="color: lightblue;">O</span>mail</span>
             </div>
             <div class="center">
-                <input type="text" name="search" id="search_mail">
+                <span class="search-bar">
+                    <span class="button search">
+                        <i class="fas fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" name="search" id="search_mail"
+                        placeholder="Search mails">
+                </span>
             </div>
             <div class="right">
-                
+                <span class="button help" title="Help">
+                    <i class="fas fa-question-circle"></i>
+                </span>
+                <span class="button settings" title="Settings">
+                    <i class="fas fa-gear"></i>
+                </span>
+                <span class="button user" title="User Settings">
+                    <i class="fas fa-user-circle"></i>
+                </span>
             </div>
         </div>
         <div class="bottom">
             <div class="left">
-
-            </div>
-            <div class="center">
-
+                <span class="write-button shadow">
+                    <i class="fas fa-plus"></i> Compose
+                </span>
+                <div class="menu">
+                    <span class="item all selected">
+                        <i class="fas fa-envelope"></i> All mail
+                    </span>
+                    <span class="item inbox">
+                        <i class="fas fa-inbox"></i> Inbox
+                    </span>
+                    <span class="item sent">
+                        <i class="fas fa-paper-plane"></i> Sent
+                    </span>
+                </div>
             </div>
             <div class="right">
-
+                <div class="mail-text">All mail</div>
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="module" src="./js/script.js"></script>
 </body>
 </html>
