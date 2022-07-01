@@ -3,7 +3,7 @@ import mail_data from "./mail_data.js"
 const mail_divs = []
 let current_type = "all"
 
-$(document).ready(() => {
+$(document).ready(function() {
     $("#search_mail").on("focus", () => $(".search-bar").addClass("focus shadow"))
     $("#search_mail").on("blur", () => $(".search-bar").removeClass("focus shadow"))
 
@@ -15,6 +15,8 @@ $(document).ready(() => {
         $(element).click(() => {
             let type = $(element).attr("class").split(/\s+/)[1]
             current_type = type
+
+            $("#search_mail").val("")
 
             $(".item").removeClass("selected")
             $(element).addClass("selected")
@@ -56,6 +58,7 @@ $(document).ready(() => {
     })
 
     $(".button.search").click(searchMail)
+    $(".button.write").click(() => $(".write-mail").css("visibility", "visible"))
 })
 
 function searchMail() {

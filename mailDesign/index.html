@@ -11,19 +11,29 @@
 </head>
 <body>
     <div class="write-mail">
-        <div class="inputs">
-            <span>
-                <label for="recipient_input">Recipient</label>
-                <input type="text" name="recipient" id="recipient_input">
-            </span>
-            <span>
-                <label for="subject_input">Subject</label>
-                <input type="text" name="subject" id="subject_input">
-            </span>
-            <span>
-                <textarea name="content" id="content_input" cols="30" rows="10">
-                </textarea>
-            </span>
+        <div class="white">
+            <div class="inputs">
+                <div style="text-align: right;">
+                    <span class="button close">
+                        <i class="fas fa-xmark"></i>
+                    </span>
+                </div>
+                <div class="input-field">
+                    <label for="recipient_input">Recipient</label>
+                    <input type="text" name="recipient" id="recipient_input">
+                </div>
+                <div class="input-field">
+                    <label for="subject_input">Subject</label>
+                    <input type="text" name="subject" id="subject_input">
+                </div>
+                <div>
+                    <textarea name="content" id="content_input" cols="30" rows="50"></textarea>
+                </div>
+                <div style="text-align: center;">
+                    <span class="button send">Send</span><br><br>
+                    <span class="error"></span>
+                </div>
+            </div>
         </div>
     </div>
     <div class="container">
@@ -54,7 +64,7 @@
         </div>
         <div class="bottom">
             <div class="left">
-                <span class="write-button shadow">
+                <span class="button write shadow">
                     <i class="fas fa-plus"></i> Compose
                 </span>
                 <div class="menu">
@@ -77,5 +87,6 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="module" src="./js/script.js"></script>
+    <script type="module" src="./js/write.js"></script>
 </body>
 </html>
