@@ -26,5 +26,30 @@ export default [
         "writer": "Me",
         "date": today,
         "type": "sent"
-    }
+    },
+    {
+        "subject": "Security alert",
+        "writer": "OSoftware",
+        "date": today,
+        "type": "inbox"
+    },
+    {
+        "subject": "Here's the video",
+        "writer": "Me",
+        "date": today,
+        "type": "sent"
+    },
+    {
+        "subject": "Your DB has been successfully created!",
+        "writer": "MYDB",
+        "date": today,
+        "type": "inbox"
+    },
+    {
+        "subject": "ahahahg",
+        "writer": "Me",
+        "date": today,
+        "type": "sent"
+    },
+    
 ]
