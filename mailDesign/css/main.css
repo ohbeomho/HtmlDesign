@@ -141,8 +141,9 @@ input {
     padding: 5px;
 }
 
-.name {
+.mail.inbox .name {
     font-weight: bold;
+    padding-right: 10px;
 }
 
 .subject {
