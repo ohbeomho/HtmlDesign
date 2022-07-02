@@ -1,6 +1,7 @@
-import mail_data from "./mail_data.js"
+import { mail_data, getToday } from "./mail_data.js"
 
-const mail_divs = []
+const mails = []
+const mail_types = [ "all", "inbox", "sent" ]
 let current_type = "all"
 
 const search_mail = document.querySelector("#search_mail")
@@ -13,19 +14,8 @@ const write_mail = document.querySelector(".write-mail")
 
 window.onload = () => {
     for (let i = 0; i < mail_data.length; i++) {
-        const mail_dom = `
-            <span class="name">${mail_data[i]["writer"]}</span>
-            <span class="subject">${mail_data[i]["subject"]}</span>
-            <span class="date">${mail_data[i]["date"]}</span>
-        `
-        const mail = document.createElement("div")
-        mail.classList.add("mail", mail_data[i]["type"])
-        mail.innerHTML = mail_dom
-        mail.addEventListener("mouseover", () => mail.classList.add("shadow"))
-        mail.addEventListener("mouseout", () => mail.classList.remove("shadow"))
-
-        document.querySelector(".bottom .right").appendChild(mail)
-        mail_divs.push(mail)
+        let data = mail_data[i]
+        addMail(data["writer"], data["subject"], data["date"], data["type"])
     }
 
     search_mail.addEventListener("focus", () => search_bar.classList.add("focus", "shadow"))
@@ -92,11 +82,14 @@ window.onload = () => {
             return
         }
 
+        addMail("Me", subject_input.value, getToday(), "sent")
+
         errorMessage("")
         recipient_input.value = ""
         subject_input.value = ""
         content_input.value = ""
         writeMailVis(false)
+
     })
 }
 
@@ -111,11 +104,11 @@ function searchMail() {
 
     for (let i = 0; i < indexes.length; i++) {
         if (current_type != "all") {
-            if (mail_divs[indexes[i]].classList.contains(current_type)) {
-                mail_divs[indexes[i]].style.display = "flex"
+            if (mails[indexes[i]].classList.contains(current_type)) {
+                mails[indexes[i]].style.display = "flex"
             }
         } else {
-            mail_divs[indexes[i]].style.display = "flex"
+            mails[indexes[i]].style.display = "flex"
         }
     }
 }
@@ -147,4 +140,22 @@ function errorMessage(message) {
 
 function writeMailVis(visibility) {
     document.querySelector(".write-mail").style.visibility = visibility ? "visible" : "hidden"
+}
+
+function addMail(writer, subject, date, type) {
+    if (mail_types.includes(type)) {
+        const mail_dom = `
+            <span class="name">${writer}</span>
+            <span class="subject">${subject}</span>
+            <span class="date">${date}</span>
+        `
+        const mail = document.createElement("div")
+        mail.classList.add("mail", type)
+        mail.innerHTML = mail_dom
+        mail.addEventListener("mouseover", () => mail.classList.add("shadow"))
+        mail.addEventListener("mouseout", () => mail.classList.remove("shadow"))
+
+        document.querySelector(".mails").prepend(mail)
+        mails.push(mail)
+    }
 }

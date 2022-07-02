@@ -128,8 +128,13 @@ input {
     background: rgba(0, 0, 0, 0.1);
 }
 
-.mail {
+.mails {
     width: 98%;
+    margin: auto;
+}
+
+.mail {
+    width: 100%;
     margin: auto;
     display: flex;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
