@@ -10,7 +10,6 @@ const subject_input = document.querySelector("#subject_input")
 const content_input = document.querySelector("#content_input")
 const search_bar = document.querySelector(".search-bar")
 const menu_items = document.querySelectorAll(".item")
-const write_mail = document.querySelector(".write-mail")
 
 window.onload = () => {
     for (let i = 0; i < mail_data.length; i++) {
