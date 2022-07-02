@@ -4,9 +4,11 @@
 I'm using jQuery and FontAwesome.  
   
 And I'm not good at English. I think there's some typos (and here too).  
-If you found it, message me.
+If you found it, message me.  
 > Discord: **OhBeomho#6632**  
-> Email: **ohbeomho0322@gmail.com**
+> Email: **ohbeomho0322@gmail.com**  
+  
+**You can use this code for free!**
 
 # Why did you make these?
 
