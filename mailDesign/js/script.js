@@ -54,7 +54,6 @@ window.onload = () => {
     document.querySelector(".button.write").addEventListener("click", () => writeMailVis(true))
     document.querySelector(".button.close").addEventListener("click", () => writeMailVis(false))
     document.querySelector(".button.send").addEventListener("click", () => {
-        // remove duplicate recipients
         let recipients = [...new Set(recipient_input.value.split(/\s+/))]
         const email_regex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
 
@@ -113,7 +112,6 @@ function searchMail() {
     }
 }
 
-// Returns the index of mails with 'search_subject' in the subject
 function search(search_subject) {
     let indexes = []
 
