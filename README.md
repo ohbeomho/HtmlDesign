@@ -8,7 +8,7 @@ If you found it, message me.
 > Discord: **OhBeomho#6632**  
 > Email: **ohbeomho0322@gmail.com**  
   
-**You can use this code for free!**
+**You can use these codes for free!**
 
 # Why did you make these?
 
