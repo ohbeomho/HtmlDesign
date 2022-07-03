@@ -2,7 +2,8 @@
     font-family: "Segoe UI Light";
 }
 
-html, body {
+html,
+body {
     margin: 0;
     width: 100%;
     height: 100vh;
@@ -17,7 +18,7 @@ html, body {
     margin-top: 20px;
 }
 
-.container > div {
+.container>div {
     display: flex;
     width: 98%;
     margin: auto;
@@ -27,7 +28,7 @@ html, body {
     flex: 1;
 }
 
-.top > div {
+.top>div {
     height: 70px;
     display: flex;
     justify-content: center;
@@ -57,7 +58,7 @@ html, body {
     overflow: auto;
 }
 
-.top > div {
+.top>div {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -142,7 +143,7 @@ input {
     transition: all 0.2s;
 }
 
-.mail > span {
+.mail>span {
     padding: 5px;
 }
 
@@ -242,7 +243,7 @@ input {
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.inputs > div {
+.inputs>div {
     flex: 1;
     margin-bottom: 20px;
 }
