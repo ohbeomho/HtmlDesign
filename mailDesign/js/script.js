@@ -1,7 +1,10 @@
-import { mail_data, getToday } from "./mail_data.js"
+import {
+    mail_data,
+    getToday
+} from "./mail_data.js"
 
 const mails = []
-const mail_types = [ "all", "inbox", "sent" ]
+const mail_types = ["all", "inbox", "sent"]
 let current_type = "all"
 
 const search_mail = document.querySelector("#search_mail")
@@ -74,7 +77,7 @@ window.onload = () => {
                 return
             }
         })
-        
+
         if (!is_email) {
             errorMessage("Please enter recipient(s) in email format.")
             return

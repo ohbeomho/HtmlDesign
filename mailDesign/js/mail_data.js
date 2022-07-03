@@ -1,12 +1,11 @@
 const date = new Date()
-const month_names = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
+const month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 export const getToday = () => {
     return `${month_names[date.getMonth()]} ${date.getDate()}`
 }
 
-export const mail_data = [
-    {
+export const mail_data = [{
         "subject": "Hey!",
         "writer": "MyFriend",
         "date": getToday(),
