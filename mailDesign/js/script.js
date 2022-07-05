@@ -16,8 +16,8 @@ const menu_items = document.querySelectorAll(".item")
 
 window.onload = () => {
     for (let i = 0; i < mail_data.length; i++) {
-        let data = mail_data[i]
-        addMail(data["writer"], data["subject"], data["date"], data["type"])
+        let { writer, subject, date, type } = mail_data[i]
+        addMail(writer, subject, date, type)
     }
 
     search_mail.addEventListener("focus", () => search_bar.classList.add("focus", "shadow"))
@@ -54,7 +54,8 @@ window.onload = () => {
 
     document.querySelector(".button.search").addEventListener("click", searchMail)
     document.querySelector(".button.write").addEventListener("click", () => writeMailVis(true))
-    document.querySelector(".button.close").addEventListener("click", () => writeMailVis(false))
+    document.querySelectorAll(".button.close").forEach(e => e.addEventListener("click",
+        () => document.querySelectorAll(".black").forEach(e1 => e1.style.visibility = "hidden")))
     document.querySelector(".button.send").addEventListener("click", () => {
         let recipients = [...new Set(recipient_input.value.split(/\s+/))]
         const email_regex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
@@ -139,7 +140,7 @@ function errorMessage(message) {
 }
 
 function writeMailVis(visibility) {
-    document.querySelector(".write-mail").style.visibility = visibility ? "visible" : "hidden"
+    document.querySelector("#write_mail").style.visibility = visibility ? "visible" : "hidden"
 }
 
 function addMail(writer, subject, date, type) {
@@ -154,8 +155,45 @@ function addMail(writer, subject, date, type) {
         mail.innerHTML = mail_dom
         mail.addEventListener("mouseover", () => mail.classList.add("shadow"))
         mail.addEventListener("mouseout", () => mail.classList.remove("shadow"))
-
+        
         document.querySelector(".mails").prepend(mail)
         mails.push(mail)
+
+        let index = mails.length - 1
+        mail.addEventListener("click", () => viewMail(mail_data[index]))
     }
+}
+
+function viewMail(mail) {
+    document.querySelector(".mail-subject").textContent = mail["subject"]
+    document.querySelector(".mail-content .text").innerHTML = mail["content"]
+    document.querySelector(".writer .display-name").textContent = mail["writer"]
+    document.querySelector(".writer .email").textContent = mail["writer-email"]
+
+    let receivers = document.querySelectorAll(".mail-receiver .receiver")
+    if (receivers != null) {
+        receivers.forEach(e => document.querySelector(".mail-receiver").removeChild(e))
+    }
+    
+    if (typeof mail["receiver"] == "object") {
+        for (let i = 0; i < mail["receiver"].length; i++) {
+            let receiver_dom = `<span class="display-name">${mail["receiver"][i]}</span>
+            <span class="email">${mail["receiver-email"][i]}</span>`
+            let receiver_span = document.createElement("span")
+            receiver_span.innerHTML = receiver_dom
+            receiver_span.classList.add("receiver")
+            document.querySelector(".mail-receiver").appendChild(receiver_span)
+        }
+    } else {
+        let receiver_dom = `<span class="writer">
+            <span class="display-name">${mail["receiver"]}</span>
+            <span class="email">${mail["receiver-email"]}</span>
+        </span>`
+        let receiver_span = document.createElement("span")
+        receiver_span.innerHTML = receiver_dom
+        receiver_span.classList.add("receiver")
+        document.querySelector(".mail-receiver").appendChild(receiver_span)
+    }
+
+    document.querySelector("#view_mail").style.visibility = "visible"
 }

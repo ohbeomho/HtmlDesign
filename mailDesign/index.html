@@ -11,9 +11,9 @@
 </head>
 
 <body>
-    <div class="write-mail">
+    <div class="black" id="write_mail">
         <div class="white">
-            <div class="inputs">
+            <div class="content">
                 <div style="text-align: right;">
                     <span class="button close">
                         <i class="fas fa-xmark"></i>
@@ -30,9 +30,35 @@
                 <div>
                     <textarea name="content" id="content_input" cols="30" rows="50"></textarea>
                 </div>
-                <div style="text-align: center;">
+                <div style="text-align: center;" class="write-mail bottom">
                     <span class="error"></span>
                     <span class="button send">Send</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="black" id="view_mail">
+        <div class="white">
+            <div class="content">
+                <div style="text-align: right;">
+                    <span class="button close">
+                        <i class="fas fa-xmark"></i>
+                    </span>
+                </div>
+                <div class="mail-subject"></div>
+                <div class="mail-writer">
+                    <span style="margin-right: 5px;">From:</span>
+                    <span class="writer">
+                        <span class="display-name"></span>
+                        <span class="email"></span>
+                    </span>
+                </div>
+                <div class="mail-receiver">
+                    <span style="margin-right: 5px;">To:</span>
+                </div>
+                <div class="mail-content">
+                    <hr>
+                    <span style="white-space: pre-wrap; word-break: break-all; width: 100%;" class="text"></span>
                 </div>
             </div>
         </div>
