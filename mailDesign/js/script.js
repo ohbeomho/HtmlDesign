@@ -174,25 +174,22 @@ function viewMail(mail) {
     if (receivers != null) {
         receivers.forEach(e => document.querySelector(".mail-receiver").removeChild(e))
     }
-    
-    if (typeof mail["receiver"] == "object") {
-        for (let i = 0; i < mail["receiver"].length; i++) {
-            let receiver_dom = `<span class="display-name">${mail["receiver"][i]}</span>
-            <span class="email">${mail["receiver-email"][i]}</span>`
-            let receiver_span = document.createElement("span")
-            receiver_span.innerHTML = receiver_dom
-            receiver_span.classList.add("receiver")
-            document.querySelector(".mail-receiver").appendChild(receiver_span)
-        }
-    } else {
-        let receiver_dom = `<span class="writer">
-            <span class="display-name">${mail["receiver"]}</span>
-            <span class="email">${mail["receiver-email"]}</span>
-        </span>`
+
+    let createReceiverSpan = (display_name, email) => {
+        let receiver_dom = `<span class="display-name">${display_name}</span>
+        <span class="email">${email}</span>`
         let receiver_span = document.createElement("span")
         receiver_span.innerHTML = receiver_dom
         receiver_span.classList.add("receiver")
-        document.querySelector(".mail-receiver").appendChild(receiver_span)
+        return receiver_span
+    }
+
+    if (typeof mail["receiver"] == "object") {
+        for (let i = 0; i < mail["receiver"].length; i++) {
+            document.querySelector(".mail-receiver").appendChild(createReceiverSpan(mail["receiver"][i], mail["receiver-email"][i]))
+        }
+    } else {
+        document.querySelector(".mail-receiver").appendChild(createReceiverSpan(mail["receiver"], mail["receiver-email"]))
     }
 
     document.querySelector("#view_mail").style.visibility = "visible"
