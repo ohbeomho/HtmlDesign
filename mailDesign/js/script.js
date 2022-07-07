@@ -1,6 +1,7 @@
 import {
     mail_data,
-    getToday
+    getToday,
+    me
 } from "./mail_data.js"
 
 const mails = []
@@ -11,6 +12,7 @@ const search_mail = document.querySelector("#search_mail")
 const recipient_input = document.querySelector("#recipient_input")
 const subject_input = document.querySelector("#subject_input")
 const content_input = document.querySelector("#content_input")
+const font_input = document.querySelector("#font_input")
 const search_bar = document.querySelector(".search-bar")
 const menu_items = document.querySelectorAll(".item")
 
@@ -20,6 +22,8 @@ window.onload = () => {
         addMail(writer, subject, date, type)
     }
 
+    font_input.value = "Segoe UI Light"
+    font_input.addEventListener("change", () => document.querySelectorAll("*").forEach(element => element.style.fontFamily = font_input.value))
     search_mail.addEventListener("focus", () => search_bar.classList.add("focus", "shadow"))
     search_mail.addEventListener("blur", () => search_bar.classList.remove("focus", "shadow"))
     search_mail.addEventListener("keydown", (event) => {
@@ -52,12 +56,15 @@ window.onload = () => {
         })
     })
 
+    document.querySelector("#dark_mode").addEventListener("change", () => document.body.classList.toggle("darkmode"))
     document.querySelector(".button.search").addEventListener("click", searchMail)
-    document.querySelector(".button.write").addEventListener("click", () => writeMailVis(true))
+    document.querySelector(".button.write").addEventListener("click", () => modalVis(true, "write_mail"))
+    document.querySelector(".button.settings").addEventListener("click", () => modalVis(true, "settings"))
+    document.querySelector(".button.reset-settings").addEventListener("click", () => location.reload())
     document.querySelectorAll(".button.close").forEach(e => e.addEventListener("click",
-        () => document.querySelectorAll(".black").forEach(e1 => e1.style.visibility = "hidden")))
+        () => document.querySelectorAll(".modal").forEach(e1 => modalVis(false, e1.id))))
     document.querySelector(".button.send").addEventListener("click", () => {
-        let recipients = [...new Set(recipient_input.value.split(/\s+/))]
+        let recipient_email = [...new Set(recipient_input.value.split(/\s+/))]
         const email_regex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
 
         if (recipient_input.value == "") {
@@ -72,12 +79,14 @@ window.onload = () => {
         }
 
         let is_email = true
-        recipients.forEach(element => {
+        recipient_email.forEach(element => {
             if (!email_regex.test(element)) {
                 is_email = false
                 return
             }
         })
+        let recipient = []
+        recipient_email.forEach(element => recipient.push(element.split("@")[0][0].toUpperCase() + element.split("@")[0].slice(1)))
 
         if (!is_email) {
             errorMessage("Please enter recipient(s) in email format.")
@@ -85,13 +94,14 @@ window.onload = () => {
         }
 
         addMail("Me", subject_input.value, getToday(), "sent")
+        writeMail(recipient, recipient_email, subject_input.value, content_input.value, getToday(), "sent")
+        console.log(recipient)
 
         errorMessage("")
         recipient_input.value = ""
         subject_input.value = ""
         content_input.value = ""
-        writeMailVis(false)
-
+        modalVis(false, "write_mail")
     })
 }
 
@@ -119,7 +129,7 @@ function search(search_subject) {
     let indexes = []
 
     for (let i = 0; i < mail_data.length; i++) {
-        if (mail_data[i]["subject"].includes(search_subject)) {
+        if (mail_data[i].subject.includes(search_subject)) {
             indexes.push(i)
         }
     }
@@ -139,8 +149,8 @@ function errorMessage(message) {
     document.querySelector(".error").innerText = message
 }
 
-function writeMailVis(visibility) {
-    document.querySelector("#write_mail").style.visibility = visibility ? "visible" : "hidden"
+function modalVis(visibility, id) {
+    document.querySelector("#" + id).style.visibility = visibility ? "visible" : "hidden"
 }
 
 function addMail(writer, subject, date, type) {
@@ -153,9 +163,9 @@ function addMail(writer, subject, date, type) {
         const mail = document.createElement("div")
         mail.classList.add("mail", type)
         mail.innerHTML = mail_dom
-        mail.addEventListener("mouseover", () => mail.classList.add("shadow"))
-        mail.addEventListener("mouseout", () => mail.classList.remove("shadow"))
-        
+        mail.addEventListener("mouseover", () => mail.classList.add("hshadow"))
+        mail.addEventListener("mouseout", () => mail.classList.remove("hshadow"))
+
         document.querySelector(".mails").prepend(mail)
         mails.push(mail)
 
@@ -164,33 +174,46 @@ function addMail(writer, subject, date, type) {
     }
 }
 
+function writeMail(recipient, recipient_email, subject, content, date, type) {
+    mail_data.push({
+        writer: "Me",
+        writer_email: me.email,
+        recipient,
+        recipient_email,
+        subject,
+        content,
+        date,
+        type
+    })
+}
+
 function viewMail(mail) {
-    document.querySelector(".mail-subject").textContent = mail["subject"]
-    document.querySelector(".mail-content .text").innerHTML = mail["content"]
-    document.querySelector(".writer .display-name").textContent = mail["writer"]
-    document.querySelector(".writer .email").textContent = mail["writer-email"]
+    document.querySelector("#view_mail .title").textContent = mail.subject
+    document.querySelector(".mail-content .text").innerHTML = mail.content
+    document.querySelector(".writer .display-name").textContent = mail.writer
+    document.querySelector(".writer .email").textContent = mail.writer_email
 
-    let receivers = document.querySelectorAll(".mail-receiver .receiver")
-    if (receivers != null) {
-        receivers.forEach(e => document.querySelector(".mail-receiver").removeChild(e))
+    let recipient = document.querySelectorAll(".mail-recipient .recipient")
+    if (recipient != null) {
+        recipient.forEach(e => document.querySelector(".mail-recipient").removeChild(e))
     }
 
-    let createReceiverSpan = (display_name, email) => {
-        let receiver_dom = `<span class="display-name">${display_name}</span>
+    let createRecipientSpan = (display_name, email) => {
+        let recipient_dom = `<span class="display-name">${display_name}</span>
         <span class="email">${email}</span>`
-        let receiver_span = document.createElement("span")
-        receiver_span.innerHTML = receiver_dom
-        receiver_span.classList.add("receiver")
-        return receiver_span
+        let recipient_span = document.createElement("span")
+        recipient_span.innerHTML = recipient_dom
+        recipient_span.classList.add("recipient")
+        return recipient_span
     }
 
-    if (typeof mail["receiver"] == "object") {
-        for (let i = 0; i < mail["receiver"].length; i++) {
-            document.querySelector(".mail-receiver").appendChild(createReceiverSpan(mail["receiver"][i], mail["receiver-email"][i]))
+    if (typeof mail.recipient == "object") {
+        for (let i = 0; i < mail.recipient.length; i++) {
+            document.querySelector(".mail-recipient").appendChild(createRecipientSpan(mail.recipient[i], mail.recipient_email[i]))
         }
     } else {
-        document.querySelector(".mail-receiver").appendChild(createReceiverSpan(mail["receiver"], mail["receiver-email"]))
+        document.querySelector(".mail-recipient").appendChild(createRecipientSpan(mail.recipient, mail.recipient_email))
     }
 
-    document.querySelector("#view_mail").style.visibility = "visible"
+    modalVis(true, "view_mail")
 }

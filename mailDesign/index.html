@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <div class="black" id="write_mail">
-        <div class="white">
+    <div class="modal" id="write_mail">
+        <div class="modal-content">
             <div class="content">
                 <div style="text-align: right;">
                     <span class="button close">
@@ -20,14 +20,15 @@
                     </span>
                 </div>
                 <div class="input-field">
-                    <label for="recipient_input">Recipient</label>
+                    <span class="label">To: </span>
                     <input type="text" name="recipient" id="recipient_input">
                 </div>
                 <div class="input-field">
-                    <label for="subject_input">Subject</label>
+                    <span class="label">Subject: </span>
                     <input type="text" name="subject" id="subject_input">
                 </div>
                 <div>
+                    <span class="label">Content</span>
                     <textarea name="content" id="content_input" cols="30" rows="50"></textarea>
                 </div>
                 <div style="text-align: center;" class="write-mail bottom">
@@ -37,15 +38,15 @@
             </div>
         </div>
     </div>
-    <div class="black" id="view_mail">
-        <div class="white">
+    <div class="modal" id="view_mail">
+        <div class="modal-content">
             <div class="content">
                 <div style="text-align: right;">
                     <span class="button close">
                         <i class="fas fa-xmark"></i>
                     </span>
                 </div>
-                <div class="mail-subject"></div>
+                <div class="title"></div>
                 <div class="mail-writer">
                     <span style="margin-right: 5px;">From:</span>
                     <span class="writer">
@@ -53,13 +54,30 @@
                         <span class="email"></span>
                     </span>
                 </div>
-                <div class="mail-receiver">
+                <div class="mail-recipient">
                     <span style="margin-right: 5px;">To:</span>
                 </div>
                 <div class="mail-content">
                     <hr>
                     <span style="white-space: pre-wrap; word-break: break-all; width: 100%;" class="text"></span>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="settings">
+        <div class="modal-content">
+            <div class="content">
+                <div style="text-align: right;">
+                    <span class="button close">
+                        <i class="fas fa-xmark"></i>
+                    </span>
+                </div>
+                <span class="title">Settings</span>
+                <span>Dark mode <input type="checkbox" id="dark_mode"></span>
+                <span>Font <input type="text" id="font_input"></span>
+                <span style="margin-top: 20px;">
+                    <span class="button reset-settings">Reset Settings</span>
+                </span>
             </div>
         </div>
     </div>

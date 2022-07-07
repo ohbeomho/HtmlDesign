@@ -23,6 +23,15 @@ hr {
     margin-top: 20px;
 }
 
+.darkmode {
+    background: rgb(101, 101, 101);
+    color: white;
+}
+
+.darkmode .modal-content {
+    background: gray;
+}
+
 .container>div {
     display: flex;
     width: 98%;
@@ -81,16 +90,21 @@ hr {
 }
 
 .button:hover {
-    background: rgba(128, 128, 128, 0.1);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .button:active {
-    background: rgba(128, 128, 128, 0.3);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 input {
     border: 0;
     outline: none;
+    background: white;
+}
+
+.darkmode input {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .search-bar {
@@ -133,6 +147,14 @@ input {
 
 .button.write:active {
     background: rgba(0, 0, 0, 0.1);
+}
+
+.top .right .button {
+    color: gray;
+}
+
+.darkmode .top .right .button {
+    color: lightgray;
 }
 
 .mails {
@@ -184,15 +206,27 @@ input {
     background: rgba(100, 100, 100, 0.05);
 }
 
+.darkmode .item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
 .item.selected {
     background: rgba(0, 0, 0, 0.05);
 }
 
-.shadow {
-    box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.1);
+.hshadow {
+    box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.2);
 }
 
-.black {
+.shadow {
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.darkmode .hshadow {
+    box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+}
+
+.modal {
     position: absolute;
     top: 0;
     left: 0;
@@ -207,7 +241,7 @@ input {
     visibility: hidden;
 }
 
-.white {
+.modal-content {
     width: 50%;
     margin: auto;
     background: white;
@@ -226,10 +260,16 @@ input {
 
 .content textarea {
     margin: auto;
+    margin-top: 3px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     outline: none;
     resize: none;
+    background: white;
     width: 100%;
+}
+
+.darkmode .content textarea {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .content .input-field {
@@ -239,9 +279,8 @@ input {
     display: flex;
 }
 
-.content label {
+.content .label {
     margin-right: 3px;
-    font-weight: bold;
 }
 
 .content input {
@@ -265,8 +304,12 @@ input {
 }
 
 .content .button {
-    background: black;
+    background: rgb(61, 61, 61);
     color: white;
+}
+
+.darkmode .content .button:hover {
+    background: darkgray;
 }
 
 .content .button:hover {
@@ -283,20 +326,24 @@ input {
     color: red;
 }
 
+.darkmode .content .error {
+    color: rgb(162, 0, 0);
+}
+
 .content .mail-subject {
     font-size: 30px;
     font-weight: bold;
 }
 
 .content .mail-writer,
-.content .mail-receiver {
+.content .mail-recipient {
     font-size: 14px;
     display: flex;
     flex-wrap: wrap;
 }
 
 .content .writer,
-.content .receiver {
+.content .recipient {
     margin-right: 10px;
 }
 
@@ -307,4 +354,9 @@ input {
 .content .email {
     color: gray;
     font-size: 12px;
+}
+
+.content .title {
+    user-select: text;
+    margin-bottom: 20px;
 }
