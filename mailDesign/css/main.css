@@ -357,6 +357,10 @@ input {
     font-size: 12px;
 }
 
+.darkmode .content .email {
+    color: lightgray;
+}
+
 .content .title {
     user-select: text;
     margin-bottom: 20px;
