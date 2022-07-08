@@ -6,7 +6,7 @@ export const getToday = () => {
 }
 
 export const me = {
-    name: "Manes Peter",
+    name: "Peter0351",
     email: "peter0351@omail.com"
 }
 
