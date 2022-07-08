@@ -19,22 +19,22 @@
                         <i class="fas fa-xmark"></i>
                     </span>
                 </div>
-                <div class="input-field">
+                <span class="input-field">
                     <span class="label">To: </span>
                     <input type="text" name="recipient" id="recipient_input">
-                </div>
-                <div class="input-field">
+                </span>
+                <span class="input-field">
                     <span class="label">Subject: </span>
                     <input type="text" name="subject" id="subject_input">
-                </div>
-                <div>
+                </span>
+                <span>
                     <span class="label">Content</span>
                     <textarea name="content" id="content_input" cols="30" rows="50"></textarea>
-                </div>
-                <div style="text-align: center;" class="write-mail bottom">
+                </span>
+                <span style="text-align: center;" class="write-mail bottom">
                     <span class="error"></span>
                     <span class="button send">Send</span>
-                </div>
+                </span>
             </div>
         </div>
     </div>
@@ -46,21 +46,21 @@
                         <i class="fas fa-xmark"></i>
                     </span>
                 </div>
-                <div class="title"></div>
-                <div class="mail-writer">
+                <span class="title"></span>
+                <span class="mail-writer">
                     <span style="margin-right: 5px;">From:</span>
                     <span class="writer">
                         <span class="display-name"></span>
                         <span class="email"></span>
                     </span>
-                </div>
-                <div class="mail-recipient">
+                </span>
+                <span class="mail-recipient">
                     <span style="margin-right: 5px;">To:</span>
-                </div>
-                <div class="mail-content">
+                </span>
+                <span class="mail-content">
                     <hr>
                     <span style="white-space: pre-wrap; word-break: break-all; width: 100%;" class="text"></span>
-                </div>
+                </span>
             </div>
         </div>
     </div>
@@ -77,6 +77,18 @@
                 <span style="margin-top: 20px;">
                     <span class="button reset-settings">Reset Settings</span>
                 </span>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="profile">
+        <div class="modal-content">
+            <div class="content">
+                <div style="text-align: right;">
+                    <span class="button close">
+                        <i class="fas fa-xmark"></i>
+                    </span>
+                </div>
+                <span class="title">Profile</span>
             </div>
         </div>
     </div>
@@ -129,6 +141,7 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="module" src="./js/script.js"></script>
 </body>
 

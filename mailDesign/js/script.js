@@ -8,14 +8,14 @@ const mails = []
 const mail_types = ["all", "inbox", "sent"]
 let current_type = "all"
 
-const search_mail = document.querySelector("#search_mail")
-const recipient_input = document.querySelector("#recipient_input")
-const subject_input = document.querySelector("#subject_input")
-const content_input = document.querySelector("#content_input")
-const search_bar = document.querySelector(".search-bar")
-const menu_items = document.querySelectorAll(".item")
+const search_mail = $("#search_mail")
+const recipient_input = $("#recipient_input")
+const subject_input = $("#subject_input")
+const content_input = $("#content_input")
+const search_bar = $(".search-bar")
+const menu_items = $(".item")
 
-window.onload = () => {
+$(function() {
     for (let i = 0; i < mail_data.length; i++) {
         let {
             writer,
@@ -26,59 +26,66 @@ window.onload = () => {
         addMail(writer, subject, date, type)
     }
 
-    search_mail.addEventListener("focus", () => search_bar.classList.add("focus", "shadow"))
-    search_mail.addEventListener("blur", () => search_bar.classList.remove("focus", "shadow"))
-    search_mail.addEventListener("keydown", (event) => {
-        if (event.keyCode == 13) {
+    search_mail.focus(() => search_bar.addClass("focus shadow"))
+    search_mail.blur(() => search_bar.removeClass("focus shadow"))
+    search_mail.keydown(event => {
+        if (event.which == 13) {
             searchMail()
         }
     })
 
-    menu_items.forEach(element => {
-        element.addEventListener("click", () => {
-            document.querySelector(".mail-text").innerText = element.innerText
-            search_mail.value = ""
+    menu_items.each(function() {
+        let element = this
+        $(element).click(() => {
+            $(".mail-text").text($(element).innerText)
+            search_mail.val("")
 
-            current_type = element.classList[1]
+            current_type = getClassList(element)[1]
 
-            menu_items.forEach(element => element.classList.remove("selected"))
-            element.classList.add("selected")
+            menu_items.each(function() {
+                $(this).removeClass("selected")
+            })
+            $(element).addClass("selected")
 
-            document.querySelectorAll(".mail").forEach(element => {
-                if (element.classList.contains(current_type)) {
-                    element.style.display = "flex"
+            $(".mail").each(function() {
+                if ($(this).hasClass(current_type)) {
+                    $(this).css("display", "flex")
                 } else {
-                    element.style.display = "none"
+                    $(this).css("display", "none")
                 }
             })
 
-            if (element.classList.contains("all")) {
+            if ($(element).hasClass("all")) {
                 mailDisplay("flex")
             }
         })
     })
 
-    document.querySelector("#dark_mode").addEventListener("change", () => document.body.classList.toggle("darkmode"))
-    document.querySelector(".button.search").addEventListener("click", searchMail)
-    document.querySelector(".button.write").addEventListener("click", () => modalVis(true, "write_mail"))
-    document.querySelector(".button.settings").addEventListener("click", () => modalVis(true, "settings"))
-    document.querySelector(".button.reset-settings").addEventListener("click", () => {
-        document.querySelector("#dark_mode").checked = false
-        document.body.classList.remove("darkmode")
+    $("#dark_mode").on("change", () => $("body").toggleClass("darkmode"))
+    $(".button.search").click(searchMail)
+    $(".button.write").click(() => modalVis(true, "write_mail"))
+    $(".button.settings").click(() => modalVis(true, "settings"))
+    $(".button.profile").click(() => modalVis(true, "profile"))
+    $(".button.reset-settings").click(() => {
+        $("#dark_mode").checked = false
+        $("body").removeClass("darkmode")
     })
-    document.querySelectorAll(".button.close").forEach(e => e.addEventListener("click",
-        () => document.querySelectorAll(".modal").forEach(e1 => modalVis(false, e1.id))))
-    document.querySelector(".button.send").addEventListener("click", () => {
-        let recipient_email = [...new Set(recipient_input.value.split(/\s+/))]
+    $(".button.close").each(function() {
+        $(this).click(() => $(".modal").each(function() {
+            modalVis(false, $(this).prop("id"))
+        }))
+    })
+    $(".button.send").click(() => {
+        let recipient_email = [...new Set(recipient_input.val().split(/\s+/))]
         const email_regex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
 
-        if (recipient_input.value == "") {
+        if (recipient_input.val() == "") {
             errorMessage("Please enter recipient(s) of the mail.")
             return
-        } else if (subject_input.value == "") {
+        } else if (subject_input.val() == "") {
             errorMessage("Please enter the subject of the mail.")
             return
-        } else if (content_input.value == "") {
+        } else if (content_input.val() == "") {
             errorMessage("Please enter the content of the mail")
             return
         }
@@ -98,17 +105,16 @@ window.onload = () => {
             return
         }
 
-        addMail("Me", subject_input.value, getToday(), "sent")
-        writeMail(recipient, recipient_email, subject_input.value, content_input.value, getToday(), "sent")
-        console.log(recipient)
+        addMail("Me", subject_input.val(), getToday(), "sent")
+        writeMail(recipient, recipient_email, subject_input.val(), content_input.val(), getToday(), "sent")
 
         errorMessage("")
-        recipient_input.value = ""
-        subject_input.value = ""
-        content_input.value = ""
+        recipient_input.val("")
+        subject_input.val("")
+        content_input.val("")
         modalVis(false, "write_mail")
     })
-}
+})
 
 function searchMail() {
     let indexes = search(search_mail.value)
@@ -147,15 +153,17 @@ function search(search_subject) {
 }
 
 function mailDisplay(display_name) {
-    document.querySelectorAll(".mail").forEach(element => element.style.display = display_name)
+    $(".mail").each(function() {
+        $(this).style.display = display_name
+    })
 }
 
 function errorMessage(message) {
-    document.querySelector(".error").innerText = message
+    $(".error").text(message)
 }
 
 function modalVis(visibility, id) {
-    document.querySelector("#" + id).style.visibility = visibility ? "visible" : "hidden"
+    $("#" + id).css("visibility", visibility ? "visible" : "hidden")
 }
 
 function addMail(writer, subject, date, type) {
@@ -165,17 +173,17 @@ function addMail(writer, subject, date, type) {
             <span class="subject">${subject}</span>
             <span class="date">${date}</span>
         `
-        const mail = document.createElement("div")
-        mail.classList.add("mail", type)
-        mail.innerHTML = mail_dom
-        mail.addEventListener("mouseover", () => mail.classList.add("hshadow"))
-        mail.addEventListener("mouseout", () => mail.classList.remove("hshadow"))
+        const $mail = $(`<div class="mail ${type}"></div>`)
+        $mail.html(mail_dom)
+        $mail.hover(function() {
+            $(this).toggleClass("hshadow")
+        })
 
-        document.querySelector(".mails").prepend(mail)
-        mails.push(mail)
+        $(".mails").prepend($mail)
+        mails.push($mail)
 
         let index = mails.length - 1
-        mail.addEventListener("click", () => viewMail(mail_data[index]))
+        $mail.click(() => viewMail(mail_data[index]))
     }
 }
 
@@ -193,32 +201,37 @@ function writeMail(recipient, recipient_email, subject, content, date, type) {
 }
 
 function viewMail(mail) {
-    document.querySelector("#view_mail .title").textContent = mail.subject
-    document.querySelector(".mail-content .text").innerHTML = mail.content
-    document.querySelector(".writer .display-name").textContent = mail.writer
-    document.querySelector(".writer .email").textContent = mail.writer_email
+    $("#view_mail .title").text(mail.subject)
+    $(".mail-content .text").html(mail.content)
+    $(".writer .display-name").text(mail.writer)
+    $(".writer .email").text(mail.writer_email)
 
-    let recipient = document.querySelectorAll(".mail-recipient .recipient")
+    let recipient = $(".mail-recipient .recipient")
     if (recipient != null) {
-        recipient.forEach(e => document.querySelector(".mail-recipient").removeChild(e))
+        recipient.each(function() {
+            $(this).remove()
+        })
     }
 
     let createRecipientSpan = (display_name, email) => {
         let recipient_dom = `<span class="display-name">${display_name}</span>
         <span class="email">${email}</span>`
-        let recipient_span = document.createElement("span")
-        recipient_span.innerHTML = recipient_dom
-        recipient_span.classList.add("recipient")
-        return recipient_span
+        let $recipient_span = $(`<span class="recipient"></span>`)
+        $recipient_span.html(recipient_dom)
+        return $recipient_span
     }
 
     if (typeof mail.recipient == "object") {
         for (let i = 0; i < mail.recipient.length; i++) {
-            document.querySelector(".mail-recipient").appendChild(createRecipientSpan(mail.recipient[i], mail.recipient_email[i]))
+            $(".mail-recipient").append(createRecipientSpan(mail.recipient[i], mail.recipient_email[i]))
         }
     } else {
-        document.querySelector(".mail-recipient").appendChild(createRecipientSpan(mail.recipient, mail.recipient_email))
+        $(".mail-recipient").append(createRecipientSpan(mail.recipient, mail.recipient_email))
     }
 
     modalVis(true, "view_mail")
+}
+
+function getClassList(element) {
+    return $(element).attr('class').split(/\s+/);
 }
