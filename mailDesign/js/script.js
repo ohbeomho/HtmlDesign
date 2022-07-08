@@ -70,7 +70,7 @@ $(function () {
     $(".button.settings").click(() => modalVis(true, "settings"))
     $(".button.profile").click(() => modalVis(true, "profile"))
     $(".button.reset-settings").click(() => {
-        $("#dark_mode").checked = false
+        $("#dark_mode").prop("checked", false)
         $("body").removeClass("darkmode")
     })
     $(".button.close").each(function () {
@@ -120,7 +120,7 @@ $(function () {
 })
 
 function searchMail() {
-    let indexes = search(search_mail.value)
+    let indexes = search(search_mail.val())
 
     mailDisplay("none")
 
@@ -130,11 +130,11 @@ function searchMail() {
 
     for (let i = 0; i < indexes.length; i++) {
         if (current_type != "all") {
-            if (mails[indexes[i]].classList.contains(current_type)) {
-                mails[indexes[i]].style.display = "flex"
+            if (mails[indexes[i]].hasClass(current_type)) {
+                mails[indexes[i]].css("display", "flex")
             }
         } else {
-            mails[indexes[i]].style.display = "flex"
+            mails[indexes[i]].css("display", "flex")
         }
     }
 }
