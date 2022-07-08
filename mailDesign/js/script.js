@@ -15,7 +15,7 @@ const content_input = $("#content_input")
 const search_bar = $(".search-bar")
 const menu_items = $(".item")
 
-$(function() {
+$(function () {
     for (let i = 0; i < mail_data.length; i++) {
         let {
             writer,
@@ -37,7 +37,7 @@ $(function() {
         }
     })
 
-    menu_items.each(function() {
+    menu_items.each(function () {
         let element = this
         $(element).click(() => {
             $(".mail-text").text($(element).innerText)
@@ -45,12 +45,12 @@ $(function() {
 
             current_type = getClassList(element)[1]
 
-            menu_items.each(function() {
+            menu_items.each(function () {
                 $(this).removeClass("selected")
             })
             $(element).addClass("selected")
 
-            $(".mail").each(function() {
+            $(".mail").each(function () {
                 if ($(this).hasClass(current_type)) {
                     $(this).css("display", "flex")
                 } else {
@@ -73,8 +73,8 @@ $(function() {
         $("#dark_mode").checked = false
         $("body").removeClass("darkmode")
     })
-    $(".button.close").each(function() {
-        $(this).click(() => $(".modal").each(function() {
+    $(".button.close").each(function () {
+        $(this).click(() => $(".modal").each(function () {
             modalVis(false, $(this).prop("id"))
         }))
     })
@@ -156,7 +156,7 @@ function search(search_subject) {
 }
 
 function mailDisplay(display_name) {
-    $(".mail").each(function() {
+    $(".mail").each(function () {
         $(this).css("display", display_name)
     })
 }
@@ -178,7 +178,7 @@ function addMail(writer, subject, date, type) {
         `
         const $mail = $(`<div class="mail ${type}"></div>`)
         $mail.html(mail_dom)
-        $mail.hover(function() {
+        $mail.hover(function () {
             $(this).toggleClass("hshadow")
         })
 
@@ -211,7 +211,7 @@ function viewMail(mail) {
 
     let recipient = $(".mail-recipient .recipient")
     if (recipient != null) {
-        recipient.each(function() {
+        recipient.each(function () {
             $(this).remove()
         })
     }
