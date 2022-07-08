@@ -26,6 +26,9 @@ $(function() {
         addMail(writer, subject, date, type)
     }
 
+    $("#profile .name").text(me.name)
+    $("#profile .email").text(me.email)
+
     search_mail.focus(() => search_bar.addClass("focus shadow"))
     search_mail.blur(() => search_bar.removeClass("focus shadow"))
     search_mail.keydown(event => {
@@ -154,7 +157,7 @@ function search(search_subject) {
 
 function mailDisplay(display_name) {
     $(".mail").each(function() {
-        $(this).style.display = display_name
+        $(this).css("display", display_name)
     })
 }
 
@@ -163,7 +166,7 @@ function errorMessage(message) {
 }
 
 function modalVis(visibility, id) {
-    $("#" + id).css("visibility", visibility ? "visible" : "hidden")
+    $(".modal#" + id).css("visibility", visibility ? "visible" : "hidden")
 }
 
 function addMail(writer, subject, date, type) {

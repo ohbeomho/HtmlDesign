@@ -337,6 +337,7 @@ input {
 
 .content .mail-writer,
 .content .mail-recipient {
+    text-align: left;
     font-size: 14px;
     display: flex;
     flex-wrap: wrap;
@@ -359,4 +360,16 @@ input {
 .content .title {
     user-select: text;
     margin-bottom: 20px;
+}
+
+.content .mail-content {
+    text-align: left;
+}
+
+.content > span {
+    text-align: center;
+}
+
+#profile .image img {
+    border-radius: 70px;
 }
