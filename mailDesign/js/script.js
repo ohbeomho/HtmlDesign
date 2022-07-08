@@ -12,18 +12,20 @@ const search_mail = document.querySelector("#search_mail")
 const recipient_input = document.querySelector("#recipient_input")
 const subject_input = document.querySelector("#subject_input")
 const content_input = document.querySelector("#content_input")
-const font_input = document.querySelector("#font_input")
 const search_bar = document.querySelector(".search-bar")
 const menu_items = document.querySelectorAll(".item")
 
 window.onload = () => {
     for (let i = 0; i < mail_data.length; i++) {
-        let { writer, subject, date, type } = mail_data[i]
+        let {
+            writer,
+            subject,
+            date,
+            type
+        } = mail_data[i]
         addMail(writer, subject, date, type)
     }
 
-    font_input.value = "Segoe UI Light"
-    font_input.addEventListener("change", () => document.querySelectorAll("*").forEach(element => element.style.fontFamily = font_input.value))
     search_mail.addEventListener("focus", () => search_bar.classList.add("focus", "shadow"))
     search_mail.addEventListener("blur", () => search_bar.classList.remove("focus", "shadow"))
     search_mail.addEventListener("keydown", (event) => {
@@ -60,7 +62,10 @@ window.onload = () => {
     document.querySelector(".button.search").addEventListener("click", searchMail)
     document.querySelector(".button.write").addEventListener("click", () => modalVis(true, "write_mail"))
     document.querySelector(".button.settings").addEventListener("click", () => modalVis(true, "settings"))
-    document.querySelector(".button.reset-settings").addEventListener("click", () => location.reload())
+    document.querySelector(".button.reset-settings").addEventListener("click", () => {
+        document.querySelector("#dark_mode").checked = false
+        document.body.classList.remove("darkmode")
+    })
     document.querySelectorAll(".button.close").forEach(e => e.addEventListener("click",
         () => document.querySelectorAll(".modal").forEach(e1 => modalVis(false, e1.id))))
     document.querySelector(".button.send").addEventListener("click", () => {
