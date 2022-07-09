@@ -108,6 +108,10 @@ input {
     background: white;
 }
 
+select {
+    outline: none;
+}
+
 .darkmode input {
     background: rgba(255, 255, 255, 0.1);
 }
@@ -284,7 +288,7 @@ input {
     display: flex;
 }
 
-.content .label {
+.content label {
     margin-right: 3px;
 }
 
@@ -341,7 +345,7 @@ input {
 }
 
 .content .mail-writer,
-.content .mail-recipient {
+.content .mail-receiver {
     text-align: left;
     font-size: 14px;
     display: flex;
@@ -349,7 +353,7 @@ input {
 }
 
 .content .writer,
-.content .recipient {
+.content .receiver {
     margin-right: 10px;
 }
 
@@ -360,6 +364,11 @@ input {
 .content .email {
     color: gray;
     font-size: 12px;
+}
+
+.content .mail-date {
+    color: gray;
+    text-align: right;
 }
 
 .darkmode .content .email {

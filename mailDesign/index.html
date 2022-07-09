@@ -21,15 +21,15 @@
                 </div>
                 <span class="title">New Mail</span>
                 <span class="input-field">
-                    <span class="label">To: </span>
-                    <input type="text" name="recipient" id="recipient_input">
+                    <label>To: </label>
+                    <input type="text" name="receiver" id="receiver_input">
                 </span>
                 <span class="input-field">
-                    <span class="label">Subject: </span>
+                    <label>Subject: </label>
                     <input type="text" name="subject" id="subject_input">
                 </span>
                 <span>
-                    <span class="label">Content</span>
+                    <label>Content</label>
                     <textarea name="content" id="content_input" cols="30" rows="50"></textarea>
                 </span>
                 <span style="text-align: center;" class="write-mail bottom">
@@ -55,9 +55,10 @@
                         <span class="email"></span>
                     </span>
                 </span>
-                <span class="mail-recipient">
+                <span class="mail-receiver">
                     <span style="margin-right: 5px;">To:</span>
                 </span>
+                <span class="mail-date"></span>
                 <span class="mail-content">
                     <hr>
                     <span style="white-space: pre-wrap; word-break: break-all; width: 100%;" class="text"></span>
@@ -75,8 +76,9 @@
                 </div>
                 <span class="title">Settings</span>
                 <span>Dark mode <input type="checkbox" id="dark_mode"></span>
-                <span style="margin-top: 20px;">
-                    <span class="button reset-settings">Reset Settings</span>
+                <br>
+                <span>
+                    <span class="button reset-settings">Reset</span>
                 </span>
             </div>
         </div>
@@ -98,6 +100,40 @@
             </div>
         </div>
     </div>
+    <div class="modal" id="search_filter">
+        <div class="modal-content">
+            <div class="content">
+                <div style="text-align: right;">
+                    <span class="button close">
+                        <i class="fas fa-xmark"></i>
+                    </span>
+                </div>
+                <span class="title">Search Filter</span>
+                <span>
+                    Search by
+                    <select id="search_by">
+                        <option value="subject" selected>Subject</option>
+                        <option value="writer">Writer Name</option>
+                        <option value="writer_email">Writer Email</option>
+                        <option value="receiver">Receiver Name</option>
+                        <option value="receiver_email">Receiver Email</option>
+                        <option value="content">Content</option>
+                    </select>
+                </span>
+                <br>
+                <span>
+                    <strong>Date</strong><br>
+                    Year <input type="number" id="search_year"><br>
+                    Month <input type="number" id="search_month"><br>
+                    Date <input type="number" id="search_date">
+                </span>
+                <br>
+                <span>
+                    <span class="button reset-search-filter">Reset</span>
+                </span>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="top">
             <div class="left">
@@ -109,6 +145,9 @@
                         <i class="fas fa-magnifying-glass"></i>
                     </span>
                     <input type="text" name="search" id="search_mail" placeholder="Search mail">
+                    <span class="button search-filter">
+                        <i class="fas fa-sliders"></i>
+                    </span>
                 </span>
             </div>
             <div class="right">

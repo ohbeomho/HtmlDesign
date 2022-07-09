@@ -1,15 +1,24 @@
 import {
     mail_data,
-    getToday,
     me
 } from "./mail_data.js"
+import {
+    month,
+    getToday
+} from "./date.js"
 
 const mails = []
 const mail_types = ["all", "inbox", "sent"]
 let current_type = "all"
+let search_by = "subject"
+let search_date = {
+    year: "",
+    month: "",
+    date: ""
+}
 
 const search_mail = $("#search_mail")
-const recipient_input = $("#recipient_input")
+const receiver_input = $("#receiver_input")
 const subject_input = $("#subject_input")
 const content_input = $("#content_input")
 const search_bar = $(".search-bar")
@@ -23,11 +32,35 @@ $(function () {
             date,
             type
         } = mail_data[i]
-        addMail(writer, subject, date, type)
+        addMail(writer, subject, date.string, type)
     }
 
     $("#profile .name").text(me.name)
     $("#profile .email").text(me.email)
+
+    let date = new Date()
+    $("#search_year").prop("max", date.getFullYear())
+    $("#search_month").prop("max", date.getMonth() + 1)
+    if (date.getMonth() + 1 == 2) {
+        $("#search_date").prop("max", 28)
+    } else if (month.month_31.includes(date.getMonth + 1)) {
+        $("#search_date").prop("max", 31)
+    } else {
+        $("#search_date").prop("max", 30)
+    }
+
+    $("#search_by").on("change", function () {
+        search_by = $(this).children("option:selected").val()
+    })
+    $("#search_year").on("change", function () {
+        search_date.year = $(this).val()
+    })
+    $("#search_month").on("change", function () {
+        search_date.month = $(this).val()
+    })
+    $("#search_date").on("change", function () {
+        search_date.date = $(this).val()
+    })
 
     search_mail.focus(() => search_bar.addClass("focus shadow"))
     search_mail.blur(() => search_bar.removeClass("focus shadow"))
@@ -73,17 +106,29 @@ $(function () {
         $("#dark_mode").prop("checked", false)
         $("body").removeClass("darkmode")
     })
+    $(".button.search-filter").click(() => modalVis(true, "search_filter"))
+    $(".button.reset-search-filter").click(() => {
+        $("#search_by").val("subject").prop("selected", true)
+        $("#search_year").val("")
+        $("#search_month").val("")
+        $("#search_date").val("")
+
+        search_by = "subject"
+        for (let p in search_date) {
+            search_date[p] = ""
+        }
+    })
     $(".button.close").each(function () {
         $(this).click(() => $(".modal").each(function () {
             modalVis(false, $(this).prop("id"))
         }))
     })
     $(".button.send").click(() => {
-        let recipient_email = [...new Set(recipient_input.val().split(/\s+/))]
+        let receiver_email = [...new Set(receiver_input.val().split(/\s+/))]
         const email_regex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
 
-        if (recipient_input.val() == "") {
-            errorMessage("Please enter recipient(s) of the mail.")
+        if (receiver_input.val() == "") {
+            errorMessage("Please enter receiver(s) of the mail.")
             return
         } else if (subject_input.val() == "") {
             errorMessage("Please enter the subject of the mail.")
@@ -94,25 +139,25 @@ $(function () {
         }
 
         let is_email = true
-        recipient_email.forEach(element => {
+        receiver_email.forEach(element => {
             if (!email_regex.test(element)) {
                 is_email = false
                 return
             }
         })
-        let recipient = []
-        recipient_email.forEach(element => recipient.push(element.split("@")[0][0].toUpperCase() + element.split("@")[0].slice(1)))
+        let receiver = []
+        receiver_email.forEach(element => receiver.push(element.split("@")[0][0].toUpperCase() + element.split("@")[0].slice(1)))
 
         if (!is_email) {
-            errorMessage("Please enter recipient(s) in email format.")
+            errorMessage("Please enter receiver(s) in email format.")
             return
         }
 
-        addMail("Me", subject_input.val(), getToday(), "sent")
-        writeMail(recipient, recipient_email, subject_input.val(), content_input.val(), getToday(), "sent")
+        addMail("Me", subject_input.val(), getToday().string, "sent")
+        writeMail(receiver, receiver_email, subject_input.val(), content_input.val(), getToday(), "sent")
 
         errorMessage("")
-        recipient_input.val("")
+        receiver_input.val("")
         subject_input.val("")
         content_input.val("")
         modalVis(false, "write_mail")
@@ -143,7 +188,36 @@ function search(search_subject) {
     let indexes = []
 
     for (let i = 0; i < mail_data.length; i++) {
-        if (mail_data[i].subject.includes(search_subject)) {
+        let flag = false
+
+        if (typeof mail_data[i][search_by] != "object") {
+            if (mail_data[i][search_by].includes(search_subject)) {
+                flag = true
+            }
+        } else {
+            mail_data[i][search_by].forEach(item => {
+                if (item.includes(search_subject)) {
+                    flag = true
+                }
+            })
+        }
+
+        if (flag) {
+            for (let p in search_date) {
+                if (search_date[p] == "") {
+                    continue
+                }
+
+                if (search_date[p] != mail_data[i].date[p]) {
+                    flag = false
+                    break
+                }
+            }
+        } else {
+            continue
+        }
+
+        if (flag) {
             indexes.push(i)
         }
     }
@@ -172,7 +246,7 @@ function modalVis(visibility, id) {
 function addMail(writer, subject, date, type) {
     if (mail_types.includes(type)) {
         const mail_dom = `
-            <span class="name">${writer}</span>
+            <span class="name">${writer == me.name ? "Me" : writer}</span>
             <span class="subject">${subject}</span>
             <span class="date">${date}</span>
         `
@@ -190,12 +264,12 @@ function addMail(writer, subject, date, type) {
     }
 }
 
-function writeMail(recipient, recipient_email, subject, content, date, type) {
+function writeMail(receiver, receiver_email, subject, content, date, type) {
     mail_data.push({
-        writer: "Me",
+        writer: me.name,
         writer_email: me.email,
-        recipient,
-        recipient_email,
+        receiver,
+        receiver_email,
         subject,
         content,
         date,
@@ -206,30 +280,31 @@ function writeMail(recipient, recipient_email, subject, content, date, type) {
 function viewMail(mail) {
     $("#view_mail .title").text(mail.subject)
     $(".mail-content .text").html(mail.content)
-    $(".writer .display-name").text(mail.writer)
+    $(".writer .display-name").text(mail.writer == me.name ? mail.writer + " (Me)" : mail.writer)
     $(".writer .email").text(mail.writer_email)
+    $(".mail-date").text(mail.date.string)
 
-    let recipient = $(".mail-recipient .recipient")
-    if (recipient != null) {
-        recipient.each(function () {
+    let receiver = $(".mail-receiver .receiver")
+    if (receiver != null) {
+        receiver.each(function () {
             $(this).remove()
         })
     }
 
-    let createRecipientSpan = (display_name, email) => {
-        let recipient_dom = `<span class="display-name">${display_name}</span>
+    let createReceiverSpan = (display_name, email) => {
+        let receiver_dom = `<span class="display-name">${display_name == me.name ? display_name + " (Me)" : display_name}</span>
         <span class="email">${email}</span>`
-        let $recipient_span = $(`<span class="recipient"></span>`)
-        $recipient_span.html(recipient_dom)
-        return $recipient_span
+        let $receiver_span = $(`<span class="receiver"></span>`)
+        $receiver_span.html(receiver_dom)
+        return $receiver_span
     }
 
-    if (typeof mail.recipient == "object") {
-        for (let i = 0; i < mail.recipient.length; i++) {
-            $(".mail-recipient").append(createRecipientSpan(mail.recipient[i], mail.recipient_email[i]))
+    if (typeof mail.receiver == "object") {
+        for (let i = 0; i < mail.receiver.length; i++) {
+            $(".mail-receiver").append(createReceiverSpan(mail.receiver[i], mail.receiver_email[i]))
         }
     } else {
-        $(".mail-recipient").append(createRecipientSpan(mail.recipient, mail.recipient_email))
+        $(".mail-receiver").append(createReceiverSpan(mail.receiver, mail.receiver_email))
     }
 
     modalVis(true, "view_mail")
