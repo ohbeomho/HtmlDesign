@@ -73,7 +73,7 @@ $(function () {
     menu_items.each(function () {
         let element = this
         $(element).click(() => {
-            $(".mail-text").text($(element).innerText)
+            $(".mail-text").text($(element).text())
             search_mail.val("")
 
             current_type = getClassList(element)[1]
