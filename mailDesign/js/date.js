@@ -1,11 +1,6 @@
 const month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-const month_31 = [1, 3, 5, 7, 8, 10, 12]
+export const month_31 = [1, 3, 5, 7, 8, 10, 12]
 const date = new Date()
-
-export const month = {
-    month_names,
-    month_31
-}
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min

@@ -3,7 +3,7 @@ import {
     me
 } from "./mail_data.js"
 import {
-    month,
+    month_31,
     getToday
 } from "./date.js"
 
@@ -43,7 +43,7 @@ $(function () {
     $("#search_month").prop("max", date.getMonth() + 1)
     if (date.getMonth() + 1 == 2) {
         $("#search_date").prop("max", 28)
-    } else if (month.month_31.includes(date.getMonth + 1)) {
+    } else if (month_31.includes(date.getMonth + 1)) {
         $("#search_date").prop("max", 31)
     } else {
         $("#search_date").prop("max", 30)
