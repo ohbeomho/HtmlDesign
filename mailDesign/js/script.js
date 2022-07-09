@@ -184,19 +184,19 @@ function searchMail() {
     }
 }
 
-function search(search_subject) {
+function search(search_text) {
     let indexes = []
 
     for (let i = 0; i < mail_data.length; i++) {
         let flag = false
 
         if (typeof mail_data[i][search_by] != "object") {
-            if (mail_data[i][search_by].includes(search_subject)) {
+            if (mail_data[i][search_by].toLowerCase().includes(search_text.toLowerCase())) {
                 flag = true
             }
         } else {
             mail_data[i][search_by].forEach(item => {
-                if (item.includes(search_subject)) {
+                if (item.toLowerCase().includes(search_text.toLowerCase())) {
                     flag = true
                 }
             })
