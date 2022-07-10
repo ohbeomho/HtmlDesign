@@ -6,16 +6,20 @@ function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-export const getRandomDate = () => {
-    let month = getRandom(1, 12)
+export const getRandomDate = (min_month = 1, max_month = 12, min_date = 1, max_date = 0) => {
+    let month = getRandom(min_month, max_month)
     let month_date
 
+    if (min_date <= 0) {
+        min_date = 1
+    }
+
     if (month == 2) {
-        month_date = getRandom(1, 29)
+        month_date = getRandom(min_date, max_date <= 0 ? 28 : max_date)
     } else if (month_31.includes(month)) {
-        month_date = getRandom(1, 31)
+        month_date = getRandom(min_date, max_date <= 0 ? 31 : max_date)
     } else {
-        month_date = getRandom(1, 30)
+        month_date = getRandom(min_date, max_date <= 0 ? 30 : max_date)
     }
 
     return {
