@@ -166,7 +166,7 @@ select {
     color: lightgray;
 }
 
-.mails {
+#mails {
     width: 98%;
     margin: auto;
 }
@@ -199,7 +199,7 @@ select {
     padding: 10px;
 }
 
-.mail-text {
+#mail_text {
     font-size: 25px;
     width: 98%;
     margin: auto;
@@ -339,13 +339,8 @@ select {
     color: rgb(162, 0, 0);
 }
 
-.content .mail-subject {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.content .mail-writer,
-.content .mail-receiver {
+.content #mail_writer,
+.content #mail_receiver {
     text-align: left;
     font-size: 14px;
     display: flex;
@@ -366,7 +361,7 @@ select {
     font-size: 12px;
 }
 
-.content .mail-date {
+.content #mail_date {
     color: gray;
     text-align: right;
 }
@@ -380,7 +375,7 @@ select {
     margin-bottom: 20px;
 }
 
-.content .mail-content {
+.content #mail_content {
     text-align: left;
 }
 

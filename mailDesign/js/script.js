@@ -73,7 +73,7 @@ $(function () {
     menu_items.each(function () {
         let element = this
         $(element).click(() => {
-            $(".mail-text").text($(element).text())
+            $("#mail_text").text($(element).text())
             search_mail.val("")
 
             current_type = getClassList(element)[1]
@@ -118,11 +118,7 @@ $(function () {
             search_date[p] = ""
         }
     })
-    $(".button.close").each(function () {
-        $(this).click(() => $(".modal").each(function () {
-            modalVis(false, $(this).prop("id"))
-        }))
-    })
+    $(".button.close").click(() => $(".modal").css("visibility", "hidden"))
     $(".button.send").click(() => {
         let receiver_email = [...new Set(receiver_input.val().split(/\s+/))]
         const email_regex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
@@ -256,7 +252,7 @@ function addMail(writer, subject, date, type) {
             $(this).toggleClass("hshadow")
         })
 
-        $(".mails").prepend($mail)
+        $("#mails").prepend($mail)
         mails.push($mail)
 
         let index = mails.length - 1
@@ -279,12 +275,12 @@ function writeMail(receiver, receiver_email, subject, content, date, type) {
 
 function viewMail(mail) {
     $("#view_mail .title").text(mail.subject)
-    $(".mail-content .text").html(mail.content)
+    $("#mail_content .text").html(mail.content)
     $(".writer .display-name").text(mail.writer == me.name ? mail.writer + " (Me)" : mail.writer)
     $(".writer .email").text(mail.writer_email)
-    $(".mail-date").text(mail.date.string)
+    $("#mail_date").text(mail.date.string)
 
-    let receiver = $(".mail-receiver .receiver")
+    let receiver = $("#mail_receiver .receiver")
     if (receiver != null) {
         receiver.each(function () {
             $(this).remove()
@@ -301,10 +297,10 @@ function viewMail(mail) {
 
     if (typeof mail.receiver == "object") {
         for (let i = 0; i < mail.receiver.length; i++) {
-            $(".mail-receiver").append(createReceiverSpan(mail.receiver[i], mail.receiver_email[i]))
+            $("#mail_receiver").append(createReceiverSpan(mail.receiver[i], mail.receiver_email[i]))
         }
     } else {
-        $(".mail-receiver").append(createReceiverSpan(mail.receiver, mail.receiver_email))
+        $("#mail_receiver").append(createReceiverSpan(mail.receiver, mail.receiver_email))
     }
 
     modalVis(true, "view_mail")
