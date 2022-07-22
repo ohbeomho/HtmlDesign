@@ -13,4 +13,4 @@ If you found it, message me.
 # Why did you make these?
 
 I made this to practice web designing.  
-So, maybe some codes are bad.
+So, I'm pretty sure these codes are bad.
