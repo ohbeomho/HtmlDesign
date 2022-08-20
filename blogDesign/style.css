@@ -7,7 +7,6 @@
 html,
 body {
 	margin: 0;
-	overflow: hidden;
 }
 
 nav {
@@ -37,28 +36,67 @@ nav a:hover {
 }
 
 .navbar-div .navbar-item {
-	padding: 5px;
+	margin: 5px;
+}
+
+#signIn,
+#signUp {
+	padding: 5px 20px 5px 20px;
+	border-radius: 40px;
+	transition: all 0.1s;
+}
+
+#signIn {
+	background: white;
+	color: black;
+}
+
+#signIn:hover {
+	background: rgb(240, 240, 240);
+}
+
+#signUp {
+	background: rgb(112, 112, 255);
+}
+
+#signUp:hover {
+	background: rgb(104, 104, 255);
 }
 
 .container {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 100vh;
-	overflow: auto;
-	padding-top: 100px;
+	padding: 50px 0px 30px 0px;
 }
 
 .blog {
 	width: 50%;
 	margin: auto;
 	padding: 10px;
-	box-shadow: 0px 0px 2px 1.5px rgba(0, 0, 0, 0.1);
+	margin-bottom: 40px;
+	box-shadow: 0px 0px 2px 1.5px rgba(0, 0, 0, 0.2);
+}
+
+.blog .top {
+	display: flex;
+	align-items: flex-end;
+}
+
+.blog .top > * {
+	padding: 2px;
 }
 
 .blog .title {
 	font-size: 30px;
+	font-weight: bold;
+	margin-right: auto;
+}
+
+.blog .writer,
+.blog .write-time {
+	font-size: 16px;
+	color: gray;
+}
+
+.blog .writer {
 	font-weight: bold;
 }
 
@@ -97,15 +135,31 @@ nav a:hover {
 	background: rgba(0, 0, 0, 0.07);
 }
 
-.blog #like {
+.blog .like {
 	color: red;
 }
 
-.blog #unlike {
+.blog .like.active {
+	background: rgba(255, 0, 0, 0.2);
+}
+
+.blog .like.active:hover {
+	background: rgba(255, 0, 0, 0.15);
+}
+
+.blog .unlike {
 	color: blue;
 }
 
-.blog #share {
+.blog .unlike.active {
+	background: rgba(0, 0, 255, 0.2);
+}
+
+.blog .unlike.active:hover {
+	background: rgba(0, 0, 255, 0.15);
+}
+
+.blog .share {
 	color: rgb(93, 93, 253);
 }
 
@@ -113,22 +167,22 @@ nav a:hover {
 	display: flex;
 }
 
-.blog .comment-write #commentContent {
+.blog .comment-write .comment-content {
 	flex: 1;
 	resize: none;
 	outline: none;
 }
 
-.blog .comment-write #addComment {
+.blog .comment-write .add-comment {
 	background: rgb(93, 93, 253);
 	color: white;
 }
 
-.blog .comment-write #addComment:hover {
+.blog .comment-write .add-comment:hover {
 	background: rgb(69, 69, 227);
 }
 
-.blog .comment-write #addComment:active {
+.blog .comment-write .add-comment:active {
 	background: rgb(102, 102, 254);
 }
 
@@ -146,6 +200,7 @@ nav a:hover {
 }
 
 .blog .comment .text {
+	white-space: pre-line;
 	word-break: break-all;
 }
 
