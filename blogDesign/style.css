@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
+
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+html,
+body {
+	margin: 0;
+	overflow: hidden;
+}
+
+nav {
+	background: rgb(93, 93, 253);
+	color: white;
+	padding: 20px;
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+}
+
+nav a:hover {
+	text-decoration: underline;
+}
+
+.navbar-div {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+}
+
+.navbar-div .navbar-brand {
+	font-size: 35px;
+	margin-right: auto;
+}
+
+.navbar-div .navbar-item {
+	padding: 5px;
+}
+
+.container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100vh;
+	overflow: auto;
+	padding-top: 100px;
+}
+
+.blog {
+	width: 50%;
+	margin: auto;
+	padding: 10px;
+	box-shadow: 0px 0px 2px 1.5px rgba(0, 0, 0, 0.1);
+}
+
+.blog .title {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.blog > .content {
+	margin-top: 20px;
+	white-space: pre-line;
+}
+
+.blog hr {
+	border-color: lightgray;
+}
+
+.blog button {
+	background: transparent;
+	border: 0;
+	padding: 5px;
+	border-radius: 4px;
+	transition: all 0.1s;
+	cursor: pointer;
+}
+
+.blog > .buttons {
+	margin-bottom: 20px;
+	text-align: right;
+}
+
+.blog > .buttons button {
+	font-weight: bold;
+}
+
+.blog .buttons button:hover {
+	background: rgba(0, 0, 0, 0.15);
+}
+
+.blog .buttons button:active {
+	background: rgba(0, 0, 0, 0.07);
+}
+
+.blog #like {
+	color: red;
+}
+
+.blog #unlike {
+	color: blue;
+}
+
+.blog #share {
+	color: rgb(93, 93, 253);
+}
+
+.blog .comment-write {
+	display: flex;
+}
+
+.blog .comment-write #commentContent {
+	flex: 1;
+	resize: none;
+	outline: none;
+}
+
+.blog .comment-write #addComment {
+	background: rgb(93, 93, 253);
+	color: white;
+}
+
+.blog .comment-write #addComment:hover {
+	background: rgb(69, 69, 227);
+}
+
+.blog .comment-write #addComment:active {
+	background: rgb(102, 102, 254);
+}
+
+.blog .comment {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.blog .comment .content {
+	display: flex;
+	flex-direction: column;
+	padding: 5px;
+	flex: 1;
+}
+
+.blog .comment .text {
+	word-break: break-all;
+}
+
+.blog .comment .buttons button {
+	font-size: 12px;
+}
+
+.blog .comment .profile {
+	display: flex;
+	align-items: center;
+}
+
+.blog .comment .profile img {
+	width: 25px;
+	height: 25px;
+	margin: 5px;
+	border-radius: 50%;
+}
+
+.blog .comment .profile .name {
+	font-weight: bold;
+}
