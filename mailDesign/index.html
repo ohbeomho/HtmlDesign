@@ -1,194 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Omail</title>
+		<link rel="stylesheet" href="./css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omail</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-</head>
+	<body>
+		<div class="modal" id="write_mail">
+			<div class="modal-content">
+				<div class="content">
+					<div style="text-align: right">
+						<span class="button close">
+							<i class="fas fa-xmark"></i>
+						</span>
+					</div>
+					<span class="title">New Mail</span>
+					<span class="input-field">
+						<label>To: </label>
+						<input type="text" name="receiver" id="receiver_input" />
+					</span>
+					<span class="input-field">
+						<label>Subject: </label>
+						<input type="text" name="subject" id="subject_input" />
+					</span>
+					<span>
+						<label>Content</label>
+						<textarea name="content" id="content_input" cols="30" rows="50"></textarea>
+					</span>
+					<span style="text-align: center" class="write-mail bottom">
+						<span class="error"></span>
+						<span class="button send">Send</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="view_mail">
+			<div class="modal-content">
+				<div class="content">
+					<div style="text-align: right">
+						<span class="button close">
+							<i class="fas fa-xmark"></i>
+						</span>
+					</div>
+					<span class="title"></span>
+					<span id="mail_writer">
+						<span style="margin-right: 5px">From:</span>
+						<span class="writer">
+							<span class="display-name"></span>
+							<span class="email"></span>
+						</span>
+					</span>
+					<span id="mail_receiver">
+						<span style="margin-right: 5px">To:</span>
+					</span>
+					<span id="mail_date"></span>
+					<span id="mail_content">
+						<hr />
+						<span style="white-space: pre-wrap; word-break: break-all; width: 100%" class="text"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="settings">
+			<div class="modal-content">
+				<div class="content">
+					<div style="text-align: right">
+						<span class="button close">
+							<i class="fas fa-xmark"></i>
+						</span>
+					</div>
+					<span class="title">Settings</span>
+					<span>Dark mode <input type="checkbox" id="dark_mode" /></span>
+					<br />
+					<span>
+						<span class="button reset-settings">Reset</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="profile">
+			<div class="modal-content">
+				<div class="content">
+					<div style="text-align: right">
+						<span class="button close">
+							<i class="fas fa-xmark"></i>
+						</span>
+					</div>
+					<span class="title">Your Profile</span>
+					<span class="image">
+						<img src="https://picsum.photos/100/100" alt="Profile Image" />
+					</span>
+					<span class="name"></span>
+					<span class="email"></span>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="search_filter">
+			<div class="modal-content">
+				<div class="content">
+					<div style="text-align: right">
+						<span class="button close">
+							<i class="fas fa-xmark"></i>
+						</span>
+					</div>
+					<span class="title">Search Filter</span>
+					<span>
+						Search by
+						<select id="search_by">
+							<option value="subject" selected>Subject</option>
+							<option value="writer">Writer Name</option>
+							<option value="writer_email">Writer Email</option>
+							<option value="receiver">Receiver Name</option>
+							<option value="receiver_email">Receiver Email</option>
+							<option value="content">Content</option>
+						</select>
+					</span>
+					<br />
+					<span>
+						<strong>Date</strong><br />
+						Year <input type="number" id="search_year" /><br />
+						Month <input type="number" id="search_month" /><br />
+						Date <input type="number" id="search_date" />
+					</span>
+					<br />
+					<span>
+						<span class="button reset-search-filter">Reset</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="top">
+				<div class="left">
+					<span class="title"><span style="color: lightblue">O</span>mail</span>
+				</div>
+				<div class="center">
+					<span class="search-bar">
+						<span class="button search" title="Search">
+							<i class="fas fa-magnifying-glass"></i>
+						</span>
+						<input type="text" name="search" id="search_mail" placeholder="Search mail" />
+						<span class="button search-filter" title="Search filter">
+							<i class="fas fa-sliders"></i>
+						</span>
+					</span>
+				</div>
+				<div class="right">
+					<span class="button help" title="Help">
+						<i class="fas fa-question-circle"></i>
+					</span>
+					<span class="button settings" title="Settings">
+						<i class="fas fa-gear"></i>
+					</span>
+					<span class="button profile" title="Profile">
+						<i class="fas fa-user-circle"></i>
+					</span>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="left">
+					<span class="button write shadow"> <i class="fas fa-plus"></i> New Mail </span>
+					<div class="menu">
+						<span class="item all selected"> <i class="fas fa-envelope"></i> All mail </span>
+						<span class="item inbox"> <i class="fas fa-inbox"></i> Inbox </span>
+						<span class="item sent"> <i class="fas fa-paper-plane"></i> Sent </span>
+					</div>
+				</div>
+				<div class="right">
+					<div id="mail_text">All mail</div>
+					<div id="mails"></div>
+				</div>
+			</div>
+		</div>
 
-<body>
-    <div class="modal" id="write_mail">
-        <div class="modal-content">
-            <div class="content">
-                <div style="text-align: right;">
-                    <span class="button close">
-                        <i class="fas fa-xmark"></i>
-                    </span>
-                </div>
-                <span class="title">New Mail</span>
-                <span class="input-field">
-                    <label>To: </label>
-                    <input type="text" name="receiver" id="receiver_input">
-                </span>
-                <span class="input-field">
-                    <label>Subject: </label>
-                    <input type="text" name="subject" id="subject_input">
-                </span>
-                <span>
-                    <label>Content</label>
-                    <textarea name="content" id="content_input" cols="30" rows="50"></textarea>
-                </span>
-                <span style="text-align: center;" class="write-mail bottom">
-                    <span class="error"></span>
-                    <span class="button send">Send</span>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="view_mail">
-        <div class="modal-content">
-            <div class="content">
-                <div style="text-align: right;">
-                    <span class="button close">
-                        <i class="fas fa-xmark"></i>
-                    </span>
-                </div>
-                <span class="title"></span>
-                <span id="mail_writer">
-                    <span style="margin-right: 5px;">From:</span>
-                    <span class="writer">
-                        <span class="display-name"></span>
-                        <span class="email"></span>
-                    </span>
-                </span>
-                <span id="mail_receiver">
-                    <span style="margin-right: 5px;">To:</span>
-                </span>
-                <span id="mail_date"></span>
-                <span id="mail_content">
-                    <hr>
-                    <span style="white-space: pre-wrap; word-break: break-all; width: 100%;" class="text"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="settings">
-        <div class="modal-content">
-            <div class="content">
-                <div style="text-align: right;">
-                    <span class="button close">
-                        <i class="fas fa-xmark"></i>
-                    </span>
-                </div>
-                <span class="title">Settings</span>
-                <span>Dark mode <input type="checkbox" id="dark_mode"></span>
-                <br>
-                <span>
-                    <span class="button reset-settings">Reset</span>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="profile">
-        <div class="modal-content">
-            <div class="content">
-                <div style="text-align: right;">
-                    <span class="button close">
-                        <i class="fas fa-xmark"></i>
-                    </span>
-                </div>
-                <span class="title">Your Profile</span>
-                <span class="image">
-                    <img src="https://picsum.photos/100/100" alt="Profile Image">
-                </span>
-                <span class="name"></span>
-                <span class="email"></span>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="search_filter">
-        <div class="modal-content">
-            <div class="content">
-                <div style="text-align: right;">
-                    <span class="button close">
-                        <i class="fas fa-xmark"></i>
-                    </span>
-                </div>
-                <span class="title">Search Filter</span>
-                <span>
-                    Search by
-                    <select id="search_by">
-                        <option value="subject" selected>Subject</option>
-                        <option value="writer">Writer Name</option>
-                        <option value="writer_email">Writer Email</option>
-                        <option value="receiver">Receiver Name</option>
-                        <option value="receiver_email">Receiver Email</option>
-                        <option value="content">Content</option>
-                    </select>
-                </span>
-                <br>
-                <span>
-                    <strong>Date</strong><br>
-                    Year <input type="number" id="search_year"><br>
-                    Month <input type="number" id="search_month"><br>
-                    Date <input type="number" id="search_date">
-                </span>
-                <br>
-                <span>
-                    <span class="button reset-search-filter">Reset</span>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="top">
-            <div class="left">
-                <span class="title"><span style="color: lightblue;">O</span>mail</span>
-            </div>
-            <div class="center">
-                <span class="search-bar">
-                    <span class="button search" title="Search">
-                        <i class="fas fa-magnifying-glass"></i>
-                    </span>
-                    <input type="text" name="search" id="search_mail" placeholder="Search mail">
-                    <span class="button search-filter" title="Search filter">
-                        <i class="fas fa-sliders"></i>
-                    </span>
-                </span>
-            </div>
-            <div class="right">
-                <span class="button help" title="Help">
-                    <i class="fas fa-question-circle"></i>
-                </span>
-                <span class="button settings" title="Settings">
-                    <i class="fas fa-gear"></i>
-                </span>
-                <span class="button profile" title="Profile">
-                    <i class="fas fa-user-circle"></i>
-                </span>
-            </div>
-        </div>
-        <div class="bottom">
-            <div class="left">
-                <span class="button write shadow">
-                    <i class="fas fa-plus"></i> New Mail
-                </span>
-                <div class="menu">
-                    <span class="item all selected">
-                        <i class="fas fa-envelope"></i> All mail
-                    </span>
-                    <span class="item inbox">
-                        <i class="fas fa-inbox"></i> Inbox
-                    </span>
-                    <span class="item sent">
-                        <i class="fas fa-paper-plane"></i> Sent
-                    </span>
-                </div>
-            </div>
-            <div class="right">
-                <div id="mail_text">All mail</div>
-                <div id="mails"></div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script type="module" src="./js/script.js"></script>
-</body>
-
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		></script>
+		<script type="module" src="./js/script.js"></script>
+	</body>
 </html>

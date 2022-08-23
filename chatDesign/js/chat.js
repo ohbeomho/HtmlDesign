@@ -1,40 +1,40 @@
-const url = new URL(location.href)
+const url = new URL(location.href);
 const urlParams = url.searchParams;
-const username = urlParams.get("name")
-const userCount = urlParams.get("uc")
-const chatInput = $(".chat-input")
-const messageName = $(".message .name")
-const messages = $(".messages")
+const username = urlParams.get('name');
+const userCount = urlParams.get('uc');
+const chatInput = $('.chat-input');
+const messageName = $('.message .name');
+const messages = $('.messages');
 
-if (username.includes("GroupChat")) {
-    $(".image img").attr("src", "./images/users.png")
-    messageName.text("Member")
+if (username.includes('GroupChat')) {
+	$('.image img').attr('src', './images/users.png');
+	messageName.text('Member');
 
-    if (userCount) {
-        $(".message.other .read").text(String(userCount - 2))
-        $(".user-count").text(String(userCount))
-    }
+	if (userCount) {
+		$('.message.other .read').text(String(userCount - 2));
+		$('.user-count').text(String(userCount));
+	}
 } else {
-    messageName.text(username)
+	messageName.text(username);
 }
 
-$(".top .name").text(username)
+$('.top .name').text(username);
 
-$(".send").click(sendMessage)
-chatInput.on("keypress", function(event) {
-    if (event.keyCode == 13) {
-        sendMessage()
-    }
-})
+$('.send').click(sendMessage);
+chatInput.on('keypress', function (event) {
+	if (event.keyCode == 13) {
+		sendMessage();
+	}
+});
 
 function sendMessage() {
-    chatInput.focus()
+	chatInput.focus();
 
-    if (chatInput.val() == "") {
-        return
-    }
+	if (chatInput.val() == '') {
+		return;
+	}
 
-    const $message = $(`
+	const $message = $(`
         <li class="message me">
             <div class="text">
                 <span class="mt">
@@ -47,9 +47,9 @@ function sendMessage() {
                     </span>
                 </span>
             </div>
-        </li>`)
-    messages.append($message)
-    $(".middle").scrollTop(messages.prop("scrollHeight"))
+        </li>`);
+	messages.append($message);
+	$('.middle').scrollTop(messages.prop('scrollHeight'));
 
-    chatInput.val("")
+	chatInput.val('');
 }
